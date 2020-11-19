@@ -50,6 +50,39 @@
 	</subsection>
 	
 	</section>
+  
+  <section>
+    <title>Nov. 24: The Matrix of a Linear Transformation</title>
+    
+    <exploration>
+      <statement>
+        Find a basis <m>\mathcal{B}</m> for <m>\R^2</m> such that the transformation <m>T: \R^2\to \R^2</m> given by
+        
+        <me>
+          T(\mathbf{x}) = \begin{bmatrix} 5 &amp; -3\\ -7 &amp; 1 \end{bmatrix}\mathbf{x}
+        </me>
+        
+        under the basis <m>\mathcal{B}</m> is diagonal.
+        <sage>
+        </sage>
+      </statement>
+    </exploration>
+    
+    <exploration>
+      <statement>
+        As it turns out, we can also use matrices to describe linear transformations between non-euclidean spaces using <term>coordinates</term>. Let's see how using differentiation <m>D: \mathbb{P}_2 \to \mathbb{P}_2</m> of quadratic polynomials as an example.
+        
+        <ol>
+          <li>Consider the general quadratic <m>ax^2 + bx + c</m>. Why can the subspace <m>\mathbb{P}_2</m> of quadratics be represented by the basis <m>\mathcal{B}=\{x^2, x, 1\}</m>?</li>
+          <li>What is the image under <m>D</m> of each of the basis vectors?</li>
+          <li>Under the basis <m>\mathcal{B}</m>, what is the coordinate vector that describes a general quadratic?</li>
+          <!-- <li>Let's consider the derivative of a general quadratic to live in <m>\mathbb{P}_2</m> under the same basis <m>\mathcal{B}</m>. What is the coordinate vector of the <emph>derivative</emph> of a general quadratic?</li> -->
+          <li>What are the coordinates of the basis vectors? How about their images under <m>D</m>?</li>
+          <li>Verify that when the matrix for <m>D</m> is applied to the coordinate vector for <m>x^2 - x -1</m> that the coordinate vector for <m>2x-1</m> is obtained.</li>
+        </ol>
+      </statement>
+    </exploration>
+  </section>
 
 
 

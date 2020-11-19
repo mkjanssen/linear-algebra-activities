@@ -1,0 +1,14 @@
+{
+  "actions" : {
+    "build" : {
+      "enabled" : true,
+      "script" : "#!\/bin\/bash\n\ncd ~\/Documents\/GitHub\/linear-algebra-activities\/HTML\/\nxsltproc -xinclude -stringparam html.css.colorfile colors_pastel_blue_orange.css ~\/Documents\/GitHub\/mathbook\/xsl\/pretext-html.xsl ~\/Documents\/GitHub\/linear-algebra-activities\/ptx\/index.ptx"
+    },
+    "run" : {
+      "enabled" : true,
+      "script" : "#!\/bin\/bash\n\ncd ~\/Documents\/GitHub\/linear-algebra-activities\/HTML\/\nopen .\/index.html"
+    }
+  },
+  "identifier" : "24DB8A91-1FF7-4EB3-8220-495B8004F7C9",
+  "openLogOnRun" : "fail"
+}
