@@ -1,0 +1,323 @@
+<chapter xml:id="Chap-Week11">
+
+  <title>Week 11: Determinants and Eigenthings</title>
+
+
+	<section xml:id="Sec-Determinant-Formulae">
+		<title>Nov. 3: Formulas for Determinants</title>
+		
+		
+	
+	<exploration>
+	<title>(Strang 5.2.2)</title>
+      <statement>
+        Compute determinants of the following matrices using the big formula. Are
+        the columns of these matrices linearly independent?
+        <me>
+          A = \begin{pmatrix} 1 &amp; 1 &amp; 0 \\ 1 &amp; 0 &amp; 1 \\ 0 &amp; 1 &amp; 1 \end{pmatrix},
+          B = \begin{pmatrix} 1 &amp; 2 &amp; 3 \\ 4 &amp; 5 &amp; 6 \\ 7 &amp; 8 &amp; 9 \end{pmatrix},
+          C = \begin{pmatrix} A &amp; 0 \\ 0 &amp; A \end{pmatrix},
+          D = \begin{pmatrix} A &amp; 0 \\ 0 &amp; B \end{pmatrix}.
+        </me>
+        <sage>
+        </sage>
+
+      </statement>
+    </exploration>
+
+    <exploration>
+    <title>(Strang 5.2.3)</title>
+      <statement>
+        Show that <m>\det(A)=0</m>, no matter what values are used to fill in the
+        five unknowns marked with dots. What are the cofactors of row 1? What is
+        the rank of <m>A</m>? What are the six terms in the big formula?
+        <me>
+          A = \begin{pmatrix} \bullet &amp; \bullet &amp; \bullet \\
+          0 &amp; 0 &amp; \bullet \\ 0 &amp; 0 &amp; \bullet \end{pmatrix}.
+        </me>
+        <sage>
+        </sage>
+      </statement>
+    </exploration>
+
+    <exploration>
+    <title>(Strang 5.2.4)</title>
+      <statement>
+        Use cofactors to compute the determinants below:
+        <me>
+          \det \begin{pmatrix} 1 &amp; 0 &amp; 0 &amp; 1 \\ 0 &amp; 1 &amp; 1 &amp; 1 \\
+          1 &amp; 1 &amp; 0 &amp; 1 \\ 1 &amp; 0 &amp; 0 &amp; 1 \end{pmatrix}, \qquad
+          \det \begin{pmatrix} 1 &amp; 0 &amp; 0 &amp; 2 \\ 0 &amp; 3 &amp; 4 &amp; 5 \\
+          5 &amp; 4 &amp; 0 &amp; 3 \\ 2 &amp; 0 &amp; 0 &amp; 1 \end{pmatrix}.
+        </me>
+        <sage>
+        </sage>
+      </statement>
+    </exploration>
+
+    <exploration>
+    <title>(Strang 5.2.5)</title>
+      <statement>
+        What is the smallest arrangement of zeros you can place in a <m>4 \times 4</m>
+        matrix to guarantee that its determinant is zero? Try to place as many non-zero
+        entries as you can while keeping <m>\det A \neq 0</m>.
+        <sage>
+        </sage>
+      </statement>
+    </exploration>
+
+    <exploration>
+      <statement>
+        Decide if the columns of this matrix are linearly dependent without doing any
+        row operations:
+        <me>
+          A = \begin{pmatrix} 4 &amp; 21\\ 3 &amp; 16 \end{pmatrix}.
+        </me>
+        <sage>
+        </sage>
+      </statement>
+    </exploration>
+
+    <exploration>
+      <statement>
+        Complete this matrix to one with determinant zero in four genuinely different
+        ways. How did you make that happen?
+        <me>
+          X = \begin{pmatrix} 2 &amp; 1 &amp; \bullet \\ 1 &amp; 1 &amp; \bullet
+          \\ -1 &amp; 1 &amp; \bullet \end{pmatrix}.
+        </me>
+        <sage>
+        </sage>
+      </statement>
+    </exploration>
+
+</section>
+
+
+	<section xml:id="Sec-Eigenvalues">
+		<title>Nov. 5: Eigenthings</title>
+	
+		<subsection>
+			
+			<title>Sage and Eigenvectors</title>
+    <p>
+      Since eigenvalues and eigenvectors are found using standard techniques, we
+      can use Sage to compute them without any new techniques.
+    </p>
+
+
+    <subsubsection>
+      <title>Using Nullspaces and root finding commands</title>
+      <p>
+        Let's use basic sage commands we have seen before to compute eigenvalues
+        and eigenvectors. We start by finding the characteristic polynomial of
+        the mundane example matrix <m>X</m> below.
+      </p>
+      <sage>
+        <input>
+          X = matrix(QQ, 3,3, [1,2,3,4,5,6,7,8,9])
+          X
+        </input>
+        <output>
+          [1 2 3]
+          [4 5 6]
+          [7 8 9]
+        </output>
+      </sage>
+      <sage>
+        <input>
+          t = var('t')
+          poly = (X - t*identity_matrix(3)).determinant()
+          poly
+        </input>
+        <output>
+          -((t - 5)*(t - 9) - 48)*(t - 1) + 29*t + 3
+        </output>
+      </sage>
+      <p>
+        Now we need the roots of that polynomial. Sage has a simple built-in for
+        that, which returns a list of pairs: (root, multiplicity).
+      </p>
+      <sage>
+        <input>
+          poly.roots()
+        </input>
+        <output>
+          [(-3/2*sqrt(33) + 15/2, 1), (3/2*sqrt(33) + 15/2, 1), (0, 1)]
+        </output>
+      </sage>
+      <p>
+        In this case each of the three roots has (algebraic) multiplicity equal
+        to one. For now, we will look at just the first one. Let's pull it out of
+        this list, give it a more convenient name, and use it to find a corresponding
+        eigenvector.
+      </p>
+      <sage>
+        <input>
+          lam = poly.roots()[0][0]
+          V = (X - lam * identity_matrix(3)).right_kernel()
+          V
+        </input>
+      </sage>
+      <p>
+        So, that looks like a mess. We can get Sage to display the basis vector
+        more nicely. This is our eigenvector.
+      </p>
+      <sage>
+        <input>
+          show(V.basis()[0])
+        </input>
+      </sage>
+      <p>Well, that probably needs a simplification or two. But there it is!</p>
+      </subsubsection>
+    <subsubsection>
+      <title>Built-in Sage Commands</title>
+      <p>
+        Sage has useful built-in commands that get at the same computations. But
+        for them to work, your matrix must be defined over a set of numbers that
+        is big enough to take roots of polynomials. We will use <c>AA</c>, which
+        stands for the <emph>real algebraic numbers</emph>.
+      </p>
+      <sage>
+        <input>
+          A = matrix(AA, 4,4, [3,134,-123,4, 2,1,34,4, 2,36,54,7, 0,0,3,1])
+          A
+        </input>
+        <output>
+          [   3  134 -123    4]
+          [   2    1   34    4]
+          [   2   36   54    7]
+          [   0    0    3    1]
+        </output>
+      </sage>
+      <sage>
+        <input>A.characteristic_polynomial()</input>
+        <output>x^4 - 59*x^3 - 990*x^2 + 18135*x - 14675</output>
+      </sage>
+      <sage>
+        <input>A.eigenvalues()</input>
+      </sage>
+      <p>The eigenvectors can be computed with this command, which again returns
+        pairs: (eigenvalue, eigenvector).
+      </p>
+      <sage>
+        <input>A.eigenvectors_right()</input>
+      </sage>
+      <p>
+        Or you can ask for the <term>eigenspaces</term> which return pairs:
+        (eigenvalue, subspace consisting of all eigenvectors which correspond).
+      </p>
+      <sage>
+        <input>A.eigenspaces_right()</input>
+      </sage>
+    </subsubsection>
+    <subsubsection>
+      <title>One more example...</title>
+      <sage>
+        <input>
+          B = matrix(AA, 2,2, [5,1,0,5])
+          B
+        </input>
+        <output>
+          [5 1]
+          [0 5]
+        </output>
+      </sage>
+      <p>This matrix has only one eigenvalue, but it has algebraic multiplicity 2.</p>
+      <sage>
+        <input>B.eigenvalues()</input>
+        <output>[5, 5]</output>
+      </sage>
+      <p>But 5 has <term>geometric multiplicity</term> only equal to one, because the corresponding
+        eigenspace has dimension one.
+      </p>
+      <sage>
+        <input>B.eigenvectors_right()</input>
+      </sage>
+      <sage>
+        <input>B.eigenspaces_right()</input>
+      </sage>
+    </subsubsection>
+		
+		</subsection>
+			
+		<subsection>
+			<title>Explorations</title>
+			
+			<exploration>
+				<statement>
+					Compute the eigenvalues and eigenvectors of <m>A</m> and <m>A^{-1}</m>.
+					<me>
+          A = \begin{pmatrix} 0 &amp; 2 \\ 1  &amp; 1  \end{pmatrix}
+        </me>
+       How are the eigenvalues of <m>A</m> and <m>A^{-1}</m>related?
+				<sage>
+					<input>
+					</input>
+				</sage>
+				</statement>
+			</exploration>
+			
+			<exploration>
+				<statement>
+					Find (by hand) the eigenvalues of <m>A</m>, <m>B</m>, and <m>A+B</m>, where 
+					<me>
+          A = \begin{pmatrix} 3 &amp; 0 \\ 1  &amp; 1  \end{pmatrix},
+          B = \begin{pmatrix} 1 &amp; 1 \\ 0 &amp; 3 \end{pmatrix}.
+        </me>
+        Is it true that eigenvalues of <m>A+B</m> are equal to eigenvalues of <m>A</m> plus eigenvalues of <m>B</m>?
+				<sage>
+					<input>
+					</input>
+				</sage>
+				</statement>
+			</exploration>
+			
+			<exploration>
+				<statement>
+					Find the eigenvalues of <m>A</m>, <m>B</m>,  <m>AB</m>, and <m>BA</m>, where 
+					<me>
+          A = \begin{pmatrix} 1 &amp; 0 \\ 1  &amp; 1  \end{pmatrix},
+          B = \begin{pmatrix} 1 &amp; 2 \\ 0 &amp; 1 \end{pmatrix}.
+        </me>
+        
+        <ol>
+        	<li>Are the eigenvalues of <m>AB</m> equal to the eigenvalues of <m>A</m> times eigenvalues of <m>B</m>?</li>
+        	<li>Are the eigenvalues of <m>AB</m> equal to the eigenvalues of <m>BA</m>?</li>
+        </ol>
+				<sage>
+					<input>
+					</input>
+				</sage>
+				</statement>
+			</exploration>
+			
+			
+						<exploration>
+				<statement>
+					A <term>Markov matrix</term> has columns that sum to 1 and are useful in probabilistic applications. It is a theorem that an <m>n\times n</m> Markov matrix <m>M</m> with strictly positive entries has a steady state vector <m>q</m> in the sense that <m>\lim\limits_{k\to\infty} M^k x_0 = q</m> given any initial state <m>x_0</m>. Consider the Markov matrix:
+					<me>
+          M = \begin{pmatrix} 0.6 &amp; 0.2 \\ 0.4  &amp; 0.8  \end{pmatrix}.
+        </me>
+       <ol>
+       	<li>Choose any initial state <m>x_0</m>. Calculate the first ten terms of the sequence <m>M^k x_0</m>. What appears to be happening?</li>
+       	<li>Let's verify the behavior you observed. Find the eigenvalues of <m>M</m>. What are their associated eigenvectors?</li>
+       	<li>What is the steady state limit <m>q</m>?</li>
+       </ol>
+				<sage>
+					<input>
+					</input>
+				</sage>
+				</statement>
+			</exploration>
+			
+		
+		</subsection>
+
+	
+	
+	</section>
+
+
+
+</chapter>

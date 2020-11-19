@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*       on 2020-11-16T21:50:56-06:00       *-->
+<!--*   A recent stable commit (2020-08-09):   *-->
+<!--* 98f21740783f166a773df4dc83cab5293ab63a4a *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<html lang="en-US">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Nov. 12: Diagonalizability and Similarity</title>
+<meta name="Keywords" content="Authored in PreTeXt">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://sagecell.sagemath.org/embedded_sagecell.js"></script><script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [['\\(','\\)']]
+    },
+    asciimath2jax: {
+        ignoreClass: ".*",
+        processClass: "has_am"
+    },
+    jax: ["input/AsciiMath"],
+    extensions: ["asciimath2jax.js"],
+    TeX: {
+        extensions: ["extpfeil.js", "autobold.js", "https://pretextbook.org/js/lib/mathjaxknowl.js", "AMScd.js", ],
+        // scrolling to fragment identifiers is controlled by other Javascript
+        positionToHash: false,
+        equationNumbers: { autoNumber: "none", useLabelIds: true, },
+        TagSide: "right",
+        TagIndent: ".8em",
+    },
+    // HTML-CSS output Jax to be dropped for MathJax 3.0
+    "HTML-CSS": {
+        scale: 88,
+        mtextFontInherit: true,
+    },
+    CommonHTML: {
+        scale: 88,
+        mtextFontInherit: true,
+    },
+});
+</script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_CHTML-full"></script><script>$(function () {
+    // Make *any* div with class 'sagecell-sage' an executable Sage cell
+    // Their results will be linked, only within language type
+    sagecell.makeSagecell({inputLocation: 'div.sagecell-sage',
+                           linked: true,
+                           languages: ['sage'],
+                           evalButtonText: 'Evaluate (Sage)'});
+});
+</script><script async="" src="https://cse.google.com/cse.js?cx=017464805646507420634:llcu9bfj13p"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/lib/jquery.min.js"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/lib/jquery.sticky.js"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/lib/jquery.espy.min.js"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/0.13/pretext.js"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/0.13/pretext_add_on.js"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/lib/knowl.js"></script><!--knowl.js code controls Sage Cells within knowls--><script xmlns:svg="http://www.w3.org/2000/svg">sagecellEvalName='Evaluate (Sage)';
+</script><link xmlns:svg="http://www.w3.org/2000/svg" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://fonts.googleapis.com/css?family=Inconsolata:400,700&amp;subset=latin,latin-ext" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/pretext.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/pretext_add_on.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/banner_default.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/toc_default.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/knowls_default.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/style_default.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/colors_default.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/setcolors.css" rel="stylesheet" type="text/css">
+<!-- 2019-10-12: Temporary - CSS file for experiments with styling --><link xmlns:svg="http://www.w3.org/2000/svg" href="developer.css" rel="stylesheet" type="text/css">
+</head>
+<body class="mathbook-book has-toc has-sidebar-left">
+<a class="assistive" href="#content">Skip to main content</a><div xmlns:svg="http://www.w3.org/2000/svg" class="hidden-content" style="display:none">\(\renewcommand{\labelitemi}{$\diamond$}
+\def\arraystretch{1.5}
+\newcommand{\contentsfinish}{}
+\newcommand{\separator}{\begin{center}\rule{\columnwidth}{\arrayrulewidth}\end{center}}
+\newcommand{\tosay}[1]{\begin{center}\text{\fbox{\scriptsize{#1}}}\end{center}}
+\renewcommand{\cftsecfont}{}
+\renewcommand{\cftsecpagefont}{}
+\renewcommand{\descriptionlabel}[1]{\hspace{\labelsep}\smallcaps{#1}}
+\def\oldequation{\equation}
+\def\endoldequation{\endequation}
+\newcommand{\nl}{
+}
+\newcommand{\runin}[1]{\textls[50]{\otherscshape #1}}
+\renewcommand{\sectionmark}[1]{}
+\renewcommand{\subsectionmark}[1]{}
+\renewcommand{\sectionmark}[1]{\markboth{{\thesection}.\ \smallcaps{#1}}{\thesection.\ \smallcaps{#1}}}
+\renewcommand{\subsectionmark}[1]{}
+\renewcommand{\sectionmark}[1]{\markboth{{\scriptsize\thesection}.\ \smallcaps{#1}}{}}
+\renewcommand{\subsectionmark}[1]{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\headrulewidth}{0.5pt}
+\newcommand{\makedefaultsection}[2][true]{
+}
+\newcommand{\timestamp}{{\color{red}Last updated: {\currenttime\ (UTC), \today}}}
+\renewcommand{\le}{\leqslant}
+\renewcommand{\leq}{\leqslant}
+\renewcommand{\geq}{\geqslant}
+\renewcommand{\ge}{\geqslant}
+\newcommand{\ideal}[1]{\left\langle\, #1 \,\right\rangle}
+\newcommand{\subgp}[1]{\left\langle\, #1 \,\right\rangle}
+\def\p{\varphi}
+\def\isomorphic{\cong}
+\def\Gal{\text{Gal}}
+\def\im{\text{im}}
+\def\normal{\vartriangleleft}
+\renewcommand{\qedsymbol}{$\checkmark$}
+\def\lcm{{\text{lcm}\,}}
+\newcommand{\q}[1]{{\color{red} {#1}}}
+\newcommand{\startimportant}[1]{\end{[{Hint:} #1]\end}}
+\renewcommand{\textcircled}[1]{\tikz[baseline=(char.base)]{\node[shape=circle,draw,inner sep=2pt,color=red] (char) {#1};}}
+\newcommand{\crossout}[1]{\tikz[baseline=(char.base)]{\node[mynode, cross out,draw] (char) {#1};}}
+\newcommand{\set}[1]{\left\{ {#1} \right\}}
+\newcommand{\setof}[2]{{\left\{#1\,\colon\,#2\right\}}}
+\def\C{{\mathbb C}}
+\def\Z{{\mathbb Z}}
+\def\bF{{\mathbb F}}
+\def\Q{{\mathbb Q}}
+\def\N{{\mathbb N}}
+\def\R{{\mathbb R}}
+\newcommand{\h}[1]{{\textbf{#1}}}
+\def\presnotes{}
+\newcommand{\lt}{&lt;}
+\newcommand{\gt}{&gt;}
+\newcommand{\amp}{&amp;}
+\)</div>
+<header id="masthead" class="smallbuttons"><div class="banner"><div class="container">
+<a id="logo-link" href=""></a><div class="title-container">
+<h1 class="heading"><a href="book-1.html"><span class="title">Linear Algebra Activities</span></a></h1>
+<p class="byline">Dr. Mike Janssen</p>
+</div>
+<div class="searchwrapper" role="search"><div class="gcse-search"></div></div>
+</div></div>
+<nav xmlns:svg="http://www.w3.org/2000/svg" id="primary-navbar" class="navbar"><div class="container">
+<div class="navbar-top-buttons">
+<button class="sidebar-left-toggle-button button active" aria-label="Show or hide table of contents sidebar">Contents</button><div class="tree-nav toolbar toolbar-divisor-3"><span class="threebuttons"><a id="previousbutton" class="previous-button toolbar-item button" href="Chap-Week12.html" title="Previous">Prev</a><a id="upbutton" class="up-button button toolbar-item" href="Chap-Week12.html" title="Up">Up</a><a id="nextbutton" class="next-button button toolbar-item" href="Chap-Week13.html" title="Next">Next</a></span></div>
+</div>
+<div class="navbar-bottom-buttons toolbar toolbar-divisor-4">
+<button class="sidebar-left-toggle-button button toolbar-item active">Contents</button><a class="previous-button toolbar-item button" href="Chap-Week12.html" title="Previous">Prev</a><a class="up-button button toolbar-item" href="Chap-Week12.html" title="Up">Up</a><a class="next-button button toolbar-item" href="Chap-Week13.html" title="Next">Next</a>
+</div>
+</div></nav></header><div class="page">
+<div xmlns:svg="http://www.w3.org/2000/svg" id="sidebar-left" class="sidebar" role="navigation"><div class="sidebar-content">
+<nav id="toc"><ul>
+<li class="link frontmatter">
+<a href="frontmatter-1.html" data-scroll="frontmatter-1"><span class="title">Front Matter</span></a><ul>
+<li><a href="colophon-1.html" data-scroll="colophon-1">Colophon</a></li>
+<li><a href="acknowledgement-1.html" data-scroll="acknowledgement-1">Acknowledgements</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="Chap-Week5.html" data-scroll="Chap-Week5"><span class="codenumber">1</span> <span class="title">Week 5: Matrices</span></a><ul><li><a href="Sec-LUFactorization.html" data-scroll="Sec-LUFactorization">Sept. 24: The \(LU\) Factorization</a></li></ul>
+</li>
+<li class="link">
+<a href="Chap-Week6.html" data-scroll="Chap-Week6"><span class="codenumber">2</span> <span class="title">Week 6: Matrices and Vector Spaces</span></a><ul>
+<li><a href="Sec-TranspSymPerm.html" data-scroll="Sec-TranspSymPerm">Sept. 29: Transposes, Symmetry, and Permutations</a></li>
+<li><a href="Sec-Spaces-of-Vectors.html" data-scroll="Sec-Spaces-of-Vectors">Oct. 1: Spaces of Vectors</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="Chap-Week7.html" data-scroll="Chap-Week7"><span class="codenumber">3</span> <span class="title">Weeks 7-8: Nullspace and solving \(Ax=b\)</span></a><ul>
+<li><a href="Sec-Nullspace.html" data-scroll="Sec-Nullspace">Oct 6: Solving \(Ax=0\)</a></li>
+<li><a href="Sec-CompleteSolution.html" data-scroll="Sec-CompleteSolution">Oct 15: The Complete Solution to \(Ax=b\)</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="Chap-Week9.html" data-scroll="Chap-Week9"><span class="codenumber">4</span> <span class="title">Weeks 9: Basis and Dimension</span></a><ul>
+<li><a href="Sec-Independence-Basis-Dimension.html" data-scroll="Sec-Independence-Basis-Dimension">Oct 20: Independence, Basis, and Dimension</a></li>
+<li><a href="Sec-FourSubspaces.html" data-scroll="Sec-FourSubspaces">Oct. 22: The Four Subspaces</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="Chap-Week10.html" data-scroll="Chap-Week10"><span class="codenumber">5</span> <span class="title">Week 10: Determinants</span></a><ul><li><a href="Sec-Determinant-Properties.html" data-scroll="Sec-Determinant-Properties">Oct 29: Properties of Determinants</a></li></ul>
+</li>
+<li class="link">
+<a href="Chap-Week11.html" data-scroll="Chap-Week11"><span class="codenumber">6</span> <span class="title">Week 11: Determinants and Eigenthings</span></a><ul>
+<li><a href="Sec-Determinant-Formulae.html" data-scroll="Sec-Determinant-Formulae">Nov. 3: Formulas for Determinants</a></li>
+<li><a href="Sec-Eigenvalues.html" data-scroll="Sec-Eigenvalues">Nov. 5: Eigenthings</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="Chap-Week12.html" data-scroll="Chap-Week12"><span class="codenumber">7</span> <span class="title">Week 12: Eigenthings</span></a><ul><li><a href="Sec-Diagonalizability.html" data-scroll="Sec-Diagonalizability" class="active">Nov. 12: Diagonalizability and Similarity</a></li></ul>
+</li>
+<li class="link">
+<a href="Chap-Week13.html" data-scroll="Chap-Week13"><span class="codenumber">8</span> <span class="title">Week 13: Linear Transformations</span></a><ul><li><a href="Sec-Linear-Transformations-I.html" data-scroll="Sec-Linear-Transformations-I">Nov. 17: Intro to Linear Transformations</a></li></ul>
+</li>
+</ul></nav><div class="extras"><nav><a class="mathbook-link" href="https://pretextbook.org">Authored in PreTeXt</a><a href="https://www.mathjax.org"><img title="Powered by MathJax" src="https://www.mathjax.org/badge/badge.gif" alt="Powered by MathJax"></a></nav></div>
+</div></div>
+<main class="main"><div id="content" class="pretext-content"><section xmlns:svg="http://www.w3.org/2000/svg" class="section" id="Sec-Diagonalizability"><h2 class="heading hide-type">
+<span class="type">Section</span> <span class="codenumber">7.1</span> <span class="title">Nov. 12: Diagonalizability and Similarity</span>
+</h2>
+<section class="subsection" id="subsection-23"><h3 class="heading hide-type">
+<span class="type">Subsection</span> <span class="codenumber">7.1.1</span> <span class="title">Sage and Diagonalization</span>
+</h3>
+<p id="p-85">Sage has built-in commands about diagonalization. We shall try a few out here. We need a matrix to play with, so we take this one:</p>
+<div class="sagecell-sage" id="sage-107"><script type="text/x-sage">A = matrix(AA, 3,3, [1,2,3,4,5,6,7,8,-1])
+A.rank()
+</script></div>
+<p id="p-86">We chose to define this matrix over <kbd class="kbdkey">AA</kbd> because we need to find roots of polynomials when looking for eigenvalues. <kbd class="kbdkey">AA</kbd> is the set of <dfn class="terminology">algebraic numbers</dfn>, which just means the collection of all roots of polynomials with integer coefficients.</p>
+<div class="sagecell-sage" id="sage-108"><script type="text/x-sage">A.is_diagonalizable()
+</script></div>
+<p id="p-87">Sage has a command for finding the eigenvector decomposition \(A = S\Lambda S^{-1}\text{.}\)</p>
+<div class="sagecell-sage" id="sage-109"><script type="text/x-sage">A.eigenmatrix_right()
+</script></div>
+<p id="p-88">As you see, Sage returns a pair of matrices. One of them is diagonal, so that is probably \(\Lambda\text{.}\) We'll use tuple unpacking to assign the matrices to sensible names.</p>
+<div class="sagecell-sage" id="sage-110"><script type="text/x-sage">Lambda, S = A.eigenmatrix_right()
+</script></div>
+<div class="sagecell-sage" id="sage-111"><script type="text/x-sage">Lambda
+</script></div>
+<div class="sagecell-sage" id="sage-112"><script type="text/x-sage">S
+</script></div>
+<p id="p-89">Note that \(S\) has the eigenvectors of \(A\) as its columns, and the corresponding eigenvalues are lined up as the diagonal entries of \(\Lambda\text{.}\)</p>
+<div class="sagecell-sage" id="sage-113"><script type="text/x-sage">A.eigenvectors_right()
+</script></div>
+<p id="p-90">Anyway, now we can check that everything lines up correctly:</p>
+<div class="sagecell-sage" id="sage-114"><script type="text/x-sage">S * Lambda * S.inverse()
+</script></div>
+<div class="sagecell-sage" id="sage-115"><script type="text/x-sage">S * Lambda * S.inverse() == A
+</script></div></section><section class="subsection" id="subsection-24"><h3 class="heading hide-type">
+<span class="type">Subsection</span> <span class="codenumber">7.1.2</span> <span class="title">Explorations</span>
+</h3>
+<article class="exploration project-like" id="exploration-50"><h6 class="heading">
+<span class="type">Exploration</span><span class="space"> </span><span class="codenumber">7.1.1</span><span class="period">.</span>
+</h6>Are the following matrices diagonalizable? Justify.<div class="displaymath">
+\begin{equation*}
+A = \begin{bmatrix} 5 &amp; 1 \\ 0  &amp; 5  \end{bmatrix}, \ B = \begin{bmatrix} 0 &amp; -4 &amp; -6 \\ -1 &amp; 0 &amp; -3 \\ 1 &amp; 2 &amp; 5 \end{bmatrix}, \ C = \begin{bmatrix} 4 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 4 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 2 &amp; 0 \\ 1 &amp; 0 &amp; 0 &amp; 2\end{bmatrix}
+\end{equation*}
+</div>
+<div class="sagecell-sage" id="sage-116"><script type="text/x-sage">
+</script></div></article><article class="exploration project-like" id="exploration-51"><h6 class="heading">
+<span class="type">Exploration</span><span class="space"> </span><span class="codenumber">7.1.2</span><span class="period">.</span>
+</h6>
+<p id="p-91">A <dfn class="terminology">discrete (linear) dynamical system</dfn> \(x_{k+1} = A x_k\text{,}\) which describes the long-term behavior of a state vector \(x_k\text{,}\) is best understood via the eigenvalues and eigenvectors of \(A\text{,}\) as described in this example.</p>
+<p id="p-92">In the redwood forests of California, dusky-footed wood rats provide up to 80% of the diet for the spotted owl, the main predator of the wood rat. Let's build a linear model to describe the basic physical system of the owls and the rats.</p>
+<p id="p-93">Denote the owl and wood rat populations at time \(k\) by the vector \(x_k = \begin{bmatrix} O_k \\ R_k \end{bmatrix}\text{,}\) where \(k\) is the time in months, \(O_k\) the number of wols in the region studied, and \(R_k\) the numer of rats (measured in thousands).  Suppose</p>
+<div class="displaymath">
+\begin{align*}
+O_{k+1} &amp;= (0.5) O_k + (0.4)R_k\\
+R_{k+1} &amp;= (-p) O_k + (1.1)R_k,
+\end{align*}
+</div>
+<p data-braille="continuation">where \(p\) is a positive parameter to be specified.</p>
+<div class="sagecell-sage" id="sage-117"><script type="text/x-sage">
+</script></div>
+<ol class="decimal">
+<li id="li-68">Ignoring the \(R_k\) term in the first equation, what does \((0.5) O_k\) mean? Answer similar questions for the other three terms on the right-hand sides of the equations.</li>
+<li id="li-69">Assume \(p=0.104\text{.}\) Write a coefficient matrix \(A\) satisfying \(x_{k+1}= A x_k\text{.}\)</li>
+<li id="li-70">Find the eigenvalues and associated eigenvectors of \(A\text{.}\)</li>
+<li id="li-71">Diagonalize \(A\text{,}\) if possible.</li>
+<li id="li-72">Let \(v_1, v_2\) be the eigenvectors of \(A\text{.}\) Why can any initial state \(x_0\) be written as a linear combination \(x_0 = c_1 v_1 +c_2 v_2\text{?}\)</li>
+<li id="li-73">Now explain why \(x_k = c_1 A^k v_1 + c_2 A^k v_2\) for any \(k &gt; 0\text{.}\) Use whatever numbers you've found in place of the letters.</li>
+<li id="li-74">As \(k\to \infty\text{,}\) what does \(x_{k+1}\) approach (in terms of \(x_k\))?</li>
+</ol></article><article class="exploration project-like" id="exploration-52"><h6 class="heading">
+<span class="type">Exploration</span><span class="space"> </span><span class="codenumber">7.1.3</span><span class="period">.</span>
+</h6>Suppose \(A\) is \(5\times 5\) with two eigenvalues. One eigenspace is three-dimensional while the other is two-dimensional. Is \(A\) diagonalizable?</article><article class="exploration project-like" id="exploration-53"><h6 class="heading">
+<span class="type">Exploration</span><span class="space"> </span><span class="codenumber">7.1.4</span><span class="period">.</span>
+</h6>Suppose \(A\) is \(3\times 3\) with two eigenvalues. Each eigenspace is one-dimensional. Is \(A\) diagonalizable?</article><article class="exploration project-like" id="exploration-54"><h6 class="heading">
+<span class="type">Exploration</span><span class="space"> </span><span class="codenumber">7.1.5</span><span class="period">.</span>
+</h6>Suppose \(A\) is \(4\times 4\) with three eigenvalues. One of the eigenspaces is one-dimensional, and one of the others is two-dimensional. Is it possible that \(A\) is <em class="emphasis">not</em> diagonalizable?</article><article class="exploration project-like" id="exploration-55"><h6 class="heading">
+<span class="type">Exploration</span><span class="space"> </span><span class="codenumber">7.1.6</span><span class="period">.</span>
+</h6>
+<p id="p-94">Let \(e_1, e_2, e_3\) be the standard basis of \(\mathbb{R}^3\text{:}\)</p>
+<div class="displaymath">
+\begin{equation*}
+e_1 = \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix}, \quad
+e_2 = \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix}, \quad
+e_3 = \begin{pmatrix} 0 \\ 0 \\ 1 \end{pmatrix}.
+\end{equation*}
+</div>
+<p data-braille="continuation">Make an example of an invertible \(3 \times 3\) matrix \(S\text{.}\) Write your matrix as a matrix of column vectors.</p>
+<div class="displaymath">
+\begin{equation*}
+S = \begin{pmatrix} | &amp; | &amp; | \\ v_1 &amp; v_2 &amp; v_3 \\
+| &amp; | &amp; | \end{pmatrix}
+\end{equation*}
+</div>
+<p data-braille="continuation">How do you know that the set \(\{ Se_1, Se_2, Se_3 \}\) is a basis for \(\mathbb{R}^3\text{?}\)</p>
+<p id="p-95">What is the connection between \(Se_1\text{,}\) \(Se_2\text{,}\) \(Se_3\text{,}\) \(S^{-1}v_1\text{,}\) \(S^{-1}v_2\text{,}\) \(S^{-1}v_3\) and the original vectors \(e_1, e_2, e_3, v_1, v_2, v_3\text{?}\)</p>
+<p id="p-96">Finally, how do we use this to understand the way that the decomposition \(A = S\Lambda S^{-1}\) works?</p></article></section></section></div></main>
+</div>
+</body>
+</html>

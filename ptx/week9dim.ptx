@@ -1,0 +1,431 @@
+<chapter xml:id="Chap-Week9">
+
+  <title>Weeks 9: Basis and Dimension</title>
+
+
+	<section xml:id="Sec-Independence-Basis-Dimension">
+		<title>Oct 20: Independence, Basis, and Dimension</title>
+		
+		
+	<subsection>
+		<title>Warming Up</title>
+			<p>
+				In the following explorations, we introduce fundamental ideas leading to basis and dimension. These are adapted from the <url href="http://iola.math.vt.edu">Inquiry-Oriented Linear Algebra</url> project at Virginia Tech.
+			</p>
+			
+			
+			<exploration>
+				<statement>
+					<p>
+						You are a young traveler, leaving home for the first time. Your parents want to help you on your journey, so just before your departure, they give you two gifts. Specifically, they give you two forms of transportation: a hover board and a magic carpet. Your parents inform you that both the hover board and the magic carpet have restrictions in how they operate:
+					</p>
+
+						<ul>
+							<li>We denote the restriction on the hover board’s movement by the vector <m>(3,1)</m>. By this we mean that if the hover board traveled “forward” for one hour, it would move along a “diagonal” path that would result in a displacement of 3 miles East and 1 mile North of its starting location.</li>
+							<li>We denote the restriction on the magic carpet’s movement by the vector <m>(1,2)</m>. By this we mean that if the magic carpet traveled “forward” for one hour, it would move along a “diagonal” path that would result in a displacement of 1 mile East and 2 miles North of its starting location.</li>
+						</ul>
+					<p>
+						Your Uncle Cramer suggests that your first adventure should be to go visit the wise man, Old Man Gauss. Uncle Cramer tells you that Old Man Gauss lives in a cabin that is 107 miles East and 64 miles North of your home. 
+					</p>
+					<p>
+						Investigate whether or not you can use the hover board and the magic carpet to get to Gauss’s cabin.
+If so, how? If it is not possible to get to the cabin with these modes of transportation, why is that the case?
+					</p>
+					<sage>
+						<input>
+						</input>
+					</sage>
+					
+					<p>
+						
+Old Man Gauss wants to move to a cabin in a different location. You are not sure whether Gauss is just trying to test your wits at finding him or if he actually wants to hide somewhere that you can't visit him.
+
+</p>
+
+<p>
+
+Are there some locations that he can hide and you cannot reach him with these two modes of transportation?
+Describe the places that you can reach using a combination of the hover board and the magic carpet and those you cannot. Specify these geometrically and algebraically. Include a symbolic representation using vector notation. Also, include a convincing argument supporting your answer.
+
+</p>
+<sage>
+						<input>
+						</input>
+					</sage>
+				</statement>
+			</exploration>
+
+
+		<exploration>
+			<statement>
+			<p>
+				Suppose you are now in a three-dimensional world for the carpet ride problem, and you have three modes of transportation: <m>v_1 = (1, 1, 1), v_2 = (6, 3, 8), v_3 = (4, 1, 3)</m>.			
+			</p>
+			
+			<p>
+			You are only allowed to use each mode of transportation once (in the forward or backward direction) for a fixed amount of time (<m>c_1</m> on <m>v_1</m>, <m>c_2</m> on <m>v_2</m>, <m>c_3</m> on <m>v_3</m>). Find the amounts of time on each mode of transportation (<m>c_1</m>, <m>c_2</m>, and <m>c_3</m>, respectively) needed to go on a journey that starts and ends at home OR explain why it is not possible to do so.
+			</p>
+			<sage>
+						<input>
+						</input>
+					</sage>
+					
+			<ol>
+				<li>Is there more than one way to make a journey that meets the requirements described above? (In other words, are there different combinations of times you can spend on the modes of transportation so that you can get back home?) If so, how?</li>
+				<li>Is there anywhere in this 3D world that Gauss could hide from you? If so, where? If not, why not?</li>
+				<li>What is the span of <m>v_1, v_2, v_3</m>?</li>
+			</ol>
+			</statement>
+		
+		</exploration>
+
+	</subsection>
+	
+	
+	<subsection>
+    <title>SageMath and Bases</title>
+    <p>
+      SageMath has several commands which are useful for dealing with the concpets
+      of this section.
+    </p>
+    <subsubsection>
+      <title>Commands for span, dimension, and basis</title>
+      <p>
+        This first command will
+        construct a vector subspace of <m>3</m>-space which is spanned by the two
+        vectors we pass in as arguments.
+      </p>
+      <sage>
+        <input>
+          v1 = vector([1,0,2])
+          v2 = vector([1,1,3])
+
+          V = span([v1,v2], QQ)
+          V
+        </input>
+        <output>
+          Vector space of degree 3 and dimension 2 over Rational Field
+          Basis matrix:
+          [1 0 2]
+          [0 1 1]
+        </output>
+      </sage>
+      <p>
+        Note that SageMath already gives us some information:
+        <ul>
+          <li>dimension</li>
+          <li>a basis</li>
+        </ul>
+        SageMath has chosen its preferred basis, as usual.
+      </p>
+      <sage>
+        <input>V.dimension()</input>
+        <ouput>2</ouput>
+      </sage>
+      <sage>
+        <input>V.basis()</input>
+        <output>
+          [
+          (1, 0, 2),
+          (0, 1, 1)
+          ]
+        </output>
+      </sage>
+    </subsubsection>
+    <subsubsection>
+      <title>The Algorithms for Checking Linear Independence</title>
+      <p>
+        SageMath does not have built-in commands with names for checking linear independence
+        or linear dependence. Instead, you have to just use the algorithms.
+      </p>
+      <subsubsubsection>
+        <title>The Row Space Algorithm</title>
+        <sage>
+          <input>
+            row_matrix = matrix(QQ, 2,3, [v1,v2])
+            row_matrix
+          </input>
+          <output>
+            [1 0 2]
+            [1 1 3]
+          </output>
+        </sage>
+        <sage>
+          <input>
+            R = row_matrix.rref()
+            R
+          </input>
+          <output>
+            [1 0 2]
+            [0 1 1]
+          </output>
+        </sage>
+        <p>
+          (Where have we seen that before?) From this, it is clear that <m>\left\{
+          v_1, v_2 \right\}</m> is linearly dependent because both rows have pivots.
+        </p>
+      </subsubsubsection>
+      <subsubsubsection>
+        <title>The Column Space Algorithm</title>
+        <p>
+          We work much the same way here.
+        </p>
+        <sage>
+          <input>
+            col_matrix = matrix(2,3, [v1,v2]).transpose()
+            col_matrix
+          </input>
+          <output>
+            [1 1]
+            [0 1]
+            [2 3]
+          </output>
+        </sage>
+        <sage>
+          <input>
+            col_matrix.rref()
+          </input>
+          <output>
+            [1 0]
+            [0 1]
+            [0 0]
+          </output>
+        </sage>
+        <p>
+          This tells us that our first two columns are pivot columns, so we
+          should
+          keep those as part of our basis for
+          <m>\mathrm{span}\left(v_1, v_2\right)</m>.
+        </p>
+      </subsubsubsection>
+    </subsubsection>
+    </subsection>
+    
+    <subsection>
+    	<title>More Explorations</title>
+    
+    <exploration>
+      <statement>
+        Make an example of a vector <m>v \in \mathbb{R}^4</m> so that the set
+        <me>
+          \left\{
+          \begin{pmatrix} 1 \\ 2 \\ 3 \\ 4 \end{pmatrix},
+          \begin{pmatrix} 0 \\ 1 \\ 2 \\ 1 \end{pmatrix},
+          \begin{pmatrix} -2\\ 1 \\ 0 \\ -5 \end{pmatrix},
+          v
+          \right\}
+        </me>
+        is a linearly independent set, or explain why it is impossible to find
+        such an example.
+        Is your resulting set a basis?
+        <sage>
+        	<input>
+        	</input>
+        </sage>
+      </statement>
+    </exploration>
+
+    <exploration>
+      <statement>
+        Make an example of a vector <m>w \in \mathbb{R}^3</m> so that the set
+        <me>
+          \left\{
+          \begin{pmatrix} 2 \\ 3 \\ 4 \end{pmatrix},
+          \begin{pmatrix} 0 \\ 1 \\ 1 \end{pmatrix},
+          \begin{pmatrix} -2\\ -4 \\ -5 \end{pmatrix},
+          w
+          \right\}
+        </me>
+        is a spanning set, or explain why it is impossible to find such an
+        example. Is your resulting set a basis?
+        <sage>
+        	<input>
+        	</input>
+        </sage>
+      </statement>
+    </exploration>
+
+    <exploration>
+    	<title>(Strang 3.5.10)</title>
+      <statement>
+        Find two independent vectors on the plane <m>x+2y-3z-t=0</m> in
+        <m>\mathbb{R}^4</m>. Then find three independent vectors on this plane.
+        Why not four? Find a matrix for which this plane is the nullspace.
+        <sage>
+        	<input>
+        	</input>
+        </sage>
+      </statement>
+    </exploration>
+</subsection>
+
+
+
+</section>
+
+<section xml:id="Sec-FourSubspaces">
+	<title>Oct. 22: The Four Subspaces</title>
+	
+	
+	<subsection>
+    <title>SageMath and the Four Subspaces</title>
+    <p>
+      We have already seen enough SageMath commands to work with the four subspaces:
+      <c>.row_space()</c>, <c>.column_space()</c>, <c>.left_kernel()</c>, and
+      <c>.right_kernel()</c> all work.
+      Alternatively, we need only remember that the left nullspace and the row
+      space are just the nullspace and column space of the transpose. Let us
+      take a look at some of the options.
+    </p>
+    <sage>
+      <input>
+        A = matrix(AA, 2,5, [3,4,5,-1,-1, 1,1,2,-1,1])
+        A
+      </input>
+      <output>
+        [ 3  4  5 -1 -1]
+        [ 1  1  2 -1  1]
+      </output>
+    </sage>
+    <sage>
+      <input>A.column_space()</input>
+      <output>
+        Vector space of degree 2 and dimension 2 over Algebraic Real Field
+        Basis matrix:
+        [1 0]
+        [0 1]
+      </output>
+    </sage>
+    <sage>
+      <input>A.right_kernel()</input>
+      <output>
+        Vector space of degree 5 and dimension 3 over Algebraic Real Field
+        Basis matrix:
+        [  1   0   0   2   1]
+        [  0   1   0 5/2 3/2]
+        [  0   0   1 7/2 3/2]
+      </output>
+    </sage>
+    <p>
+      We have computed column spaces and nullspaces before. What about our
+      new friends?
+    </p>
+    <sage>
+      <input>A.row_space()</input>
+      <output>
+        Vector space of degree 5 and dimension 2 over Algebraic Real Field
+        Basis matrix:
+        [ 1  0  3 -3  5]
+        [ 0  1 -1  2 -4]
+      </output>
+    </sage>
+    <sage>
+      <input>A.transpose().column_space()</input>
+      <output>
+        Vector space of degree 5 and dimension 2 over Algebraic Real Field
+        Basis matrix:
+        [ 1  0  3 -3  5]
+        [ 0  1 -1  2 -4]
+      </output>
+    </sage>
+    <sage>
+      <input>A.transpose().column_space() == A.row_space()</input>
+      <output>True</output>
+    </sage>
+    <p>
+      Since SageMath prefers rows under the hood, the left nullspace is easy to find.
+    </p>
+    <sage>
+      <input>A.left_kernel()</input>
+      <output>
+        Vector space of degree 2 and dimension 0 over Algebraic Real Field
+        Basis matrix:
+        []
+      </output>
+    </sage>
+    <sage>
+      <input>A.transpose().right_kernel()</input>
+      <output>
+        Vector space of degree 2 and dimension 0 over Algebraic Real Field
+        Basis matrix:
+        []
+      </output>
+    </sage>
+    <sage>
+      <input>A.left_kernel() == A.transpose().right_kernel()</input>
+      <output>True</output>
+    </sage>
+    <p>
+      And there you have it. SageMath can construct all four fundamental subspaces,
+      and each comes with a basis computed by Sage. (Using the row algorithm!)
+      Note that the FTLA works in this case.
+    </p>
+
+  </subsection>
+  
+  <subsection>
+  	<title>Explorations</title>
+  	
+  	
+ </subsection>
+ 
+ <exploration>
+ <statement>
+        Find the four subspaces, including a basis of each, for the matrix
+        <me>
+          A = \begin{pmatrix}
+          7 &amp; -1 &amp; 3 \\
+          -2 &amp; 4 &amp; -5 \\
+          1 &amp; 11 &amp; -12
+          \end{pmatrix}.
+        </me>
+        <sage>
+        	<input>
+        	</input>
+        </sage>
+      </statement>
+ </exploration>
+	
+	<exploration>
+	<statement>
+        Find the four subspaces, including a basis of each, for the matrix
+        <me>
+          B = \begin{pmatrix}
+          1 &amp; 3 &amp; -2 &amp; 0 &amp; 2 &amp; 0 \\
+          2 &amp; 6 &amp; -5 &amp; -2 &amp; 4 &amp; -3 \\
+          0 &amp; 0 &amp; 5 &amp; 10 &amp; 0 &amp; 15 \\
+          2 &amp; 6 &amp; 0 &amp; 8 &amp; 4 &amp; 18
+          \end{pmatrix}.
+        </me>
+        <sage>
+        	<input>
+        	</input>
+        </sage>
+      </statement>
+      
+      
+	
+	</exploration>
+	
+	
+	<exploration>
+		<statement>
+			<title>(Strang 3.6.24)</title>
+        <p>
+          The equation <m>A^Ty = d</m> is solvable exactly when <m>d</m> lies in
+          one of the four subspaces associated to <m>A</m>. Which is it?
+        </p>
+        <p>
+          Which subspace can you use to determine if the solution to that
+          equation is unique? How do you use that subspace?
+        </p>
+        <sage>
+        	<input>
+        	</input>
+        </sage>
+      </statement>
+	</exploration>
+</section>
+
+
+</chapter>

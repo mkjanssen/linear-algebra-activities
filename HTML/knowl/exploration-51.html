@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*       on 2020-11-16T21:50:57-06:00       *-->
+<!--*   A recent stable commit (2020-08-09):   *-->
+<!--* 98f21740783f166a773df4dc83cab5293ab63a4a *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<script>$(function () {
+    // Make *any* div with class 'sagecell-sage' an executable Sage cell
+    // Their results will be linked, only within language type
+    sagecell.makeSagecell({inputLocation: 'div.sagecell-sage',
+                           linked: true,
+                           languages: ['sage'],
+                           evalButtonText: 'Evaluate (Sage)'});
+});
+</script>
+</head>
+<body>
+<article class="exploration project-like"><h6 xmlns:svg="http://www.w3.org/2000/svg" class="heading">
+<span class="type">Exploration</span><span class="space"> </span><span class="codenumber">7.1.2</span><span class="period">.</span>
+</h6>
+<p xmlns:svg="http://www.w3.org/2000/svg">A <dfn class="terminology">discrete (linear) dynamical system</dfn> \(x_{k+1} = A x_k\text{,}\) which describes the long-term behavior of a state vector \(x_k\text{,}\) is best understood via the eigenvalues and eigenvectors of \(A\text{,}\) as described in this example.</p>
+<p xmlns:svg="http://www.w3.org/2000/svg">In the redwood forests of California, dusky-footed wood rats provide up to 80% of the diet for the spotted owl, the main predator of the wood rat. Let's build a linear model to describe the basic physical system of the owls and the rats.</p>
+<p>Denote the owl and wood rat populations at time \(k\) by the vector \(x_k = \begin{bmatrix} O_k \\ R_k \end{bmatrix}\text{,}\) where \(k\) is the time in months, \(O_k\) the number of wols in the region studied, and \(R_k\) the numer of rats (measured in thousands).  Suppose</p>
+<div xmlns:svg="http://www.w3.org/2000/svg" class="displaymath">
+\begin{align*}
+O_{k+1} &amp;= (0.5) O_k + (0.4)R_k\\
+R_{k+1} &amp;= (-p) O_k + (1.1)R_k,
+\end{align*}
+</div>
+<p data-braille="continuation">where \(p\) is a positive parameter to be specified.</p>
+<div class="sagecell-sage" id="sage-117"><script type="text/x-sage">
+</script></div>
+<ol class="decimal">
+<li>Ignoring the \(R_k\) term in the first equation, what does \((0.5) O_k\) mean? Answer similar questions for the other three terms on the right-hand sides of the equations.</li>
+<li>Assume \(p=0.104\text{.}\) Write a coefficient matrix \(A\) satisfying \(x_{k+1}= A x_k\text{.}\)</li>
+<li>Find the eigenvalues and associated eigenvectors of \(A\text{.}\)</li>
+<li>Diagonalize \(A\text{,}\) if possible.</li>
+<li>Let \(v_1, v_2\) be the eigenvectors of \(A\text{.}\) Why can any initial state \(x_0\) be written as a linear combination \(x_0 = c_1 v_1 +c_2 v_2\text{?}\)</li>
+<li>Now explain why \(x_k = c_1 A^k v_1 + c_2 A^k v_2\) for any \(k &gt; 0\text{.}\) Use whatever numbers you've found in place of the letters.</li>
+<li>As \(k\to \infty\text{,}\) what does \(x_{k+1}\) approach (in terms of \(x_k\))?</li>
+</ol></article><span class="incontext"><a href="Sec-Diagonalizability.html#exploration-51">in-context</a></span>
+</body>
+</html>

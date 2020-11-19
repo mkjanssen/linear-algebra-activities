@@ -1,0 +1,431 @@
+<chapter xml:id="Chap-Week6">
+
+  <title>Week 6: Matrices and Vector Spaces</title>
+
+
+	<section xml:id="Sec-TranspSymPerm">
+		<title>Sept. 29: Transposes, Symmetry, and Permutations</title>
+		
+		<subsection>
+			<title>Warmup</title>
+			
+			<p>
+  		As usual, we should set up our working environment. There should be no output.
+  	</p>
+
+	<sage>
+      <input>
+        M = MatrixSpace(QQ,3,3)
+        I = M(1)
+      </input>     
+      <output> 
+      
+      </output>
+    </sage>
+			
+			
+			<principle>
+				<statement>
+					Use Sage to calculate an <m>LDU</m> factorization for the given matrix <m>A</m>. Recall the <m>A=LU</m> factorization is found with the command <c>P, L, U = A.LU(pivot='nonzero')</c>.
+					
+					<sage>
+						<input>
+							A = M([1,-2,-1,-1,5,6,5,-4,6])
+						</input>
+					</sage>
+				
+				</statement>
+			
+			</principle>
+			
+			
+		</subsection>
+
+		
+		 <subsection>
+ 	<title>Exploring Symmetry</title>
+ 	
+ 	
+    
+
+ 	
+ 	
+ <exploration>
+ 
+ 	<statement>
+ 		Create two symmetric matrices (probably of different sizes, just to be safe). Use the <c>.inverse()</c> command to find their inverses. What do you notice? What do you wonder?
+ 		<sage>
+ 		
+ 		</sage>
+</statement>
+</exploration>
+
+
+ <exploration>
+ 
+ 	<statement>
+ 		Create a matrix <m>A</m>. Use the <c>.transpose()</c> command and multiply <m>A A^T</m> and <m>A^T A</m>. What do you notice? What do you wonder?
+ 		<sage>
+ 		
+ 		</sage>
+</statement>
+</exploration>
+
+
+
+<p>
+	An advantage of working with symmetric matrices is in the elimination process. We really only need to work with half of the matrix (plus the main diagonal)! So let's see how symmetric matrices carry through to the <m>LDU</m> factorization.
+</p>
+
+<exploration>
+	<statement>
+	Consider the matrix <m>B</m> below.
+	
+	<ol>
+		<li>Confirm that <m>B</m> is symmetric by using the <c>.is_symmetric()</c> command.</li>
+		<li>Capture the matrices <m>P</m>, <m>L</m>, and <m>U</m>, using <c>P, L, U = B.LU(pivot='nonzero')</c>. Confirm that no row swaps were needed.</li>
+		<li>Find the diagonal matrix <m>D</m> and a new matrix <m>U_{\text{new}}</m> that satisfies <m>B = LDU_{\text{new}}</m>.</li>
+		<li>What do you notice? Choose a different symmetric matrix and run the calculations again to see if the same behavior persists.</li>
+	</ol>
+
+	<sage>
+        <input>
+          B = M([2,1,0,1,1,0,0,0,1])
+          B
+        </input>     
+      </sage>
+      </statement>
+      
+</exploration>
+
+
+<subsection>
+	<title>Fun with Permutations</title>
+
+<exploration>
+<statement>
+	Strang writes <m>PA = LU</m>, but Sage calculates the <m>P</m> that satisfies <m>A = PLU</m>. Let's explore their relationship (though maybe you know what it is already?).
+	
+	<ol>
+		<li>
+			Given the <m>A</m> below, use <c>P, L, U = A.LU()</c> to calculate an <m>LU</m> decomposition.
+		</li>
+		<li>Confirm that <m>A = PLU</m>.</li>
+		<li>What permutation matrix <m>P'</m> satisfies <m>P' A = LU</m>? Confirm it in Sage.</li>
+		
+	</ol>
+	
+	<sage>
+        <input>
+        	A = M([1,2,3,4,5,6,7,8,9])
+          
+        </input>
+    </sage>
+</statement>
+</exploration>
+
+
+<p>
+	To close the section, let's put everything together in an exploration of the deep structure of a system of equations.
+	
+</p>
+
+
+<exploration>
+
+	<statement>
+		 Consider the following system of 3 linear equations in 3 unknowns.
+        <me>\left\{
+        \begin{array}{rrrrrrr}
+        -x &amp; - &amp; 2y &amp; + &amp; 2z &amp; = &amp; 1 \\
+        2x &amp; + &amp; 4y &amp; - &amp; z &amp; = &amp; 5 \\
+        x &amp; - &amp; 2y &amp; - &amp; 3z &amp; = &amp; 3
+        \end{array}\right.
+        </me>
+        
+        
+        <sage>
+	        	<input>
+        			A=M([-1,-2,2,2,4,-1,1,-2,-3])
+        			B=matrix(3,4,[-1,-2,2,1,2,4,-1,5,1,-2,-3,3])
+        			b=matrix(3,1,[1,5,3])
+        			PT, L, Uold = A.LU()
+        			P=PT.transpose()
+   			</input>    
+        </sage>
+        
+        <ol>
+        
+        	<li>Find <m>D</m> and <m>U</m> so that you can write <m>PA = LDU</m> and <m>A = P^T LDU</m>.</li>
+        <li>	Multiply <m>P b</m> to get <m>b'</m>.</li>
+        
+        <li>Solve <m>Lc = b'</m>.</li>
+        
+        <li>Solve <m>Dy=c</m>.</li>
+        <li>Now solve the upper-triangular system <m>Ux = y</m>.</li>
+        	<li>What is the solution to the original system?</li>
+        	<li>Confirm your solution by using Sage's <c>.rref()</c> command on an appropriate matrix.</li>
+        </ol>
+	</statement>
+
+
+</exploration>
+
+</subsection>
+
+
+<exercises>
+
+<exercise>
+ <statement>
+        Find an example of a matrix <m>A</m> such that <m>A^T A = 0</m>,
+        but <m>A \neq 0</m>.
+        
+        <sage>
+        
+        </sage>
+
+      </statement>
+    </exercise>
+
+<exercise>
+<statement>
+        These are true or false questions. If the statement is true, explain why
+        you know it is true. If the statement is false, give an example that
+        shows it is false.
+        <ol>
+          <li>
+            The block matrix <m>\left( \begin{smallmatrix} A &amp; 0 \\
+            0 &amp; A \end{smallmatrix}\right)</m> is automatically symmetric.
+          </li>
+          <li>
+            If <m>A</m> and <m>B</m> are symmetric, then their product <m>AB</m>
+            is symmetric.
+          </li>
+          <li>
+            If <m>A</m> is not symmetric, then <m>A^{-1}</m> is not symmetric.
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+
+<exercise>
+
+<statement>
+        For each of the following, find an example of a <m>2\times 2</m>
+        symmetric matrix with the given property:
+        <ol>
+          <li> <m>A</m> is not invertible.</li>
+          <li> <m>A</m> is invertible but cannot be factored into <m>LU</m>.</li>
+          <li>
+            <m>A</m> can be factored into <m>LDL^T</m>, but not into
+            <m>LL^T</m> because <m>D</m> has negative entries.
+          </li>
+        </ol>
+        <sage>
+        
+        </sage>
+
+      </statement>
+</exercise>
+
+
+
+<exercise>
+      <statement>
+        <p>
+          This is a new factorization of <m>A</m> into <em>triangular
+          times symmetric</em>:
+        </p>
+        <p>
+          Start with <m>A = LDU</m>. Then <m>A = B S</m>,
+          where <m>B = L\left(U^T\right)^{-1}</m> and <m>S = U^T D U</m>.
+        </p>
+        <p>
+          Explain why this choice of <m>B</m> is lower triangular with
+          <m>1</m>'s on the diagonal. Expain why <m>S</m> is symmetric.
+        </p>
+      </statement>
+</exercise>
+
+
+</exercises>
+
+
+
+</subsection>
+	
+	</section>
+
+	
+<section xml:id="Sec-Spaces-of-Vectors">
+	<title>Oct. 1: Spaces of Vectors</title>
+	
+	<subsection>
+		<title>On Vector Spaces and Subspaces</title>
+	<exploration>
+	
+		<statement>
+			
+	
+        Let <m>\mathcal{P}</m> be the set of polynomials of degree 3 or less.
+        Explain why <m>\mathcal{P}</m> is a vector space, or explain why it is not.
+     
+
+   
+			
+		
+		</statement>
+	</exploration>
+
+<exploration>			
+	<statement>
+		Explain why the following are subspaces of <m>\mathbb{R}^3</m>.
+		<ul>
+			<li>Any line through <m>(0,0,0)</m>.</li>
+			<li>The set of all <m>(x,y,z)</m> satisfying <m>3x-4y+z=0</m>.</li>
+		</ul>
+
+	</statement>
+
+</exploration>
+
+			
+<exploration>
+      <statement>
+        Consider the vector space <m>\mathbb{R}^2</m>. Explain why the following
+        are not subspaces:
+        <ul>
+          <li>The unit circle.</li>
+          <li>The line <m>x+y = 4</m>.</li>
+          <li>The union of lines <m>2x+3y = 0</m> and <m>x-y=0</m>.</li>
+          <li>The first quadrant where <m>x\geq 0</m> and <m>y\geq 0</m>.</li>
+        </ul>
+      </statement>
+</exploration>
+
+
+<exploration>
+      <statement>
+        Let <m>W</m> be the set of continuous functions <m>f</m> in
+        <m>\mathcal{C}(\mathbb{R})</m> which satisfy 
+        <m>f''(x) = 0</m>. Decide if <m>W</m> is a subspace of
+        <m>\mathcal{C}(\mathbb{R})</m>, and explain your thinking.
+      </statement>
+</exploration>
+
+
+</subsection>
+
+<subsection>
+
+	<title>Column Spaces and Sage</title>
+	
+	<p>
+	Sage can work with vector spaces! Let's set up our workspace.
+	</p>
+	<sage>
+      <input>
+        V = VectorSpace(QQ, 3)
+        V
+      </input>
+      <output>Vector space of dimension 3 over Rational Field</output>
+    </sage>
+    <p>
+      This is like the <c>MatrixSpace</c> construction we have seen before.
+      <c>V</c> is now the collection of all vectors of size <m>3</m> with
+      rational numbers as entries.
+    </p>
+	
+	<exploration>
+	
+		<statement>
+			Let's see how to get column spaces from Sage.
+			First, let's define a <m>2\times 3</m> matrix <m>A</m>.
+			<sage>
+      <input>
+        A = matrix(QQ, 2,3, [4,5,3,0,1,1])
+        A
+      </input>
+      
+    </sage>
+    Now, we get the column space.
+    <sage>
+      <input>
+        A.column_space()
+      </input>
+      
+    </sage>
+    <p>
+      Note that SageMath gives information in terms of a basis. We will talk about
+      this concept soon.
+    </p>
+    
+    Compute the column space of <m>B</m> below. What do you notice? What do you wonder?
+    
+    <sage>
+      <input>
+        B = matrix(QQ, 3,3 , [1,2,3,4,5,6,7,8,9])
+        B
+      </input>
+    </sage>
+    
+     <p>
+      SageMath prefers to display vectors as rows! This is a big interal preference.
+      We just have to get over it. Well, we have to <em>remember it</em> and get over it.
+      To access the basis vectors and display them as columns,
+      we will use the following:
+    </p>
+    <sage>
+      <input>
+        B.column_space().basis()[0].column() # first basis vector
+      </input>
+      
+    </sage>
+    <sage>
+      <input>
+        B.column_space().basis()[1].column() # second basis vector
+      </input>
+      
+    </sage>
+    
+		</statement>
+	
+	</exploration>
+	
+	
+<exploration>
+      <statement>
+        Find an example of a vector which is not in the column space of the
+        matrix <me>
+        C = \begin{pmatrix} 2 &amp; 1  \\ 1 &amp; 1 \end{pmatrix},
+        </me> or explain why that is not possible. Here's a Sage cell if it's helpful:
+        <sage>
+				<input>
+					C = matrix(2,2,[2,1,1,1])
+					C.column_space()
+				</input>
+        </sage>
+      </statement>
+</exploration>
+
+<exploration>
+      <statement>
+        Find an example of a vector which is not in the column space of the
+        matrix <me>
+        D = \begin{pmatrix} 3 &amp; 2 \\ 6 &amp; 4 \end{pmatrix},
+        </me> or explain why it is not possible.
+        <sage>
+        		<input>
+        			D = matrix(2,2,[3,2,6,4])
+        		</input>
+        </sage>
+      </statement>
+</exploration>
+
+</subsection>
+
+</section>
+
+
+</chapter>

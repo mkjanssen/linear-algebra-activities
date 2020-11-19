@@ -1,0 +1,56 @@
+<chapter xml:id="Chap-Week13">
+
+  <title>Week 13: Linear Transformations</title>
+
+
+	<section xml:id="Sec-Linear-Transformations-I">
+		<title>Nov. 17: Intro to Linear Transformations</title>
+		
+		
+	<subsection>
+    <title>Explorations</title>
+    
+    	
+    	<exploration>
+    		<title>Italicizing the N</title>
+    		<statement>
+    		
+    		<image xml:id="the-N" width="50%" source="./the_n.png" />
+    			<p>
+    				Suppose the N on the left is written in regular 12-point font. Find a matrix <m>A</m> that will transform the N into the letter on the right, which is written in italics with 16-point font. Work with someone sitting nearby (if you want) and write out your solution and approach. What assumptions do you notice yourself/your group making? What questions do you have?
+    			</p>
+				<sage>
+				</sage>
+
+    		</statement>
+
+    	</exploration>
+    	
+    	<exploration>	
+    		<statement>
+    			Explain why <m>T(\mathbf{0}) = \mathbf{0}</m> for any linear transformation <m>T</m>. Further justify that translation is not a linear transformation of the plane <m>\R^2</m>.
+    		</statement>
+
+    	</exploration>
+    	
+    	
+    	<exploration>
+    		<statement>
+    			As you might imagine, linear transformations are foundational to how computers display and manipulate images. However, we must engage in some mathematical trickery to translate images across the screen.
+    			Read the discussion immediately preceding <url href="http://merganser.math.gvsu.edu/david/linear.algebra/ula/ula/sec-transforms-geom.html">Activity 2.6.4</url>.
+    			Then work through the problems presented there.
+    		</statement>
+
+    	</exploration>
+
+
+
+
+
+	</subsection>
+	
+	</section>
+
+
+
+</chapter>

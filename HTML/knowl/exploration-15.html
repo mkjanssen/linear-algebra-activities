@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*       on 2020-11-16T21:50:56-06:00       *-->
+<!--*   A recent stable commit (2020-08-09):   *-->
+<!--* 98f21740783f166a773df4dc83cab5293ab63a4a *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<script>$(function () {
+    // Make *any* div with class 'sagecell-sage' an executable Sage cell
+    // Their results will be linked, only within language type
+    sagecell.makeSagecell({inputLocation: 'div.sagecell-sage',
+                           linked: true,
+                           languages: ['sage'],
+                           evalButtonText: 'Evaluate (Sage)'});
+});
+</script>
+</head>
+<body>
+<article class="exploration project-like"><h6 xmlns:svg="http://www.w3.org/2000/svg" class="heading">
+<span class="type">Exploration</span><span class="space"> </span><span class="codenumber">2.2.5</span><span class="period">.</span>
+</h6>Let's see how to get column spaces from Sage. First, let's define a \(2\times 3\) matrix \(A\text{.}\) <div class="sagecell-sage" id="sage-18"><script type="text/x-sage">A = matrix(QQ, 2,3, [4,5,3,0,1,1])
+A
+</script></div> Now, we get the column space. <div class="sagecell-sage" id="sage-19"><script type="text/x-sage">A.column_space()
+</script></div>
+<p xmlns:svg="http://www.w3.org/2000/svg">Note that SageMath gives information in terms of a basis. We will talk about this concept soon.</p> Compute the column space of \(B\) below. What do you notice? What do you wonder? <div class="sagecell-sage" id="sage-20"><script type="text/x-sage">B = matrix(QQ, 3,3 , [1,2,3,4,5,6,7,8,9])
+B
+</script></div>
+<p xmlns:svg="http://www.w3.org/2000/svg">SageMath prefers to display vectors as rows! This is a big interal preference. We just have to get over it. Well, we have to <em class="emphasis">remember it</em> and get over it. To access the basis vectors and display them as columns, we will use the following:</p>
+<div class="sagecell-sage" id="sage-21"><script type="text/x-sage">B.column_space().basis()[0].column() # first basis vector
+</script></div>
+<div class="sagecell-sage" id="sage-22"><script type="text/x-sage">B.column_space().basis()[1].column() # second basis vector
+</script></div></article><span class="incontext"><a href="Sec-Spaces-of-Vectors.html#exploration-15">in-context</a></span>
+</body>
+</html>

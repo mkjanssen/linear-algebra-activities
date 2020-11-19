@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*       on 2020-11-16T21:50:55-06:00       *-->
+<!--*   A recent stable commit (2020-08-09):   *-->
+<!--* 98f21740783f166a773df4dc83cab5293ab63a4a *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<html lang="en-US">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Oct 29: Properties of Determinants</title>
+<meta name="Keywords" content="Authored in PreTeXt">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://sagecell.sagemath.org/embedded_sagecell.js"></script><script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [['\\(','\\)']]
+    },
+    asciimath2jax: {
+        ignoreClass: ".*",
+        processClass: "has_am"
+    },
+    jax: ["input/AsciiMath"],
+    extensions: ["asciimath2jax.js"],
+    TeX: {
+        extensions: ["extpfeil.js", "autobold.js", "https://pretextbook.org/js/lib/mathjaxknowl.js", "AMScd.js", ],
+        // scrolling to fragment identifiers is controlled by other Javascript
+        positionToHash: false,
+        equationNumbers: { autoNumber: "none", useLabelIds: true, },
+        TagSide: "right",
+        TagIndent: ".8em",
+    },
+    // HTML-CSS output Jax to be dropped for MathJax 3.0
+    "HTML-CSS": {
+        scale: 88,
+        mtextFontInherit: true,
+    },
+    CommonHTML: {
+        scale: 88,
+        mtextFontInherit: true,
+    },
+});
+</script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_CHTML-full"></script><script>$(function () {
+    // Make *any* div with class 'sagecell-sage' an executable Sage cell
+    // Their results will be linked, only within language type
+    sagecell.makeSagecell({inputLocation: 'div.sagecell-sage',
+                           linked: true,
+                           languages: ['sage'],
+                           evalButtonText: 'Evaluate (Sage)'});
+});
+</script><script async="" src="https://cse.google.com/cse.js?cx=017464805646507420634:llcu9bfj13p"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/lib/jquery.min.js"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/lib/jquery.sticky.js"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/lib/jquery.espy.min.js"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/0.13/pretext.js"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/0.13/pretext_add_on.js"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/lib/knowl.js"></script><!--knowl.js code controls Sage Cells within knowls--><script xmlns:svg="http://www.w3.org/2000/svg">sagecellEvalName='Evaluate (Sage)';
+</script><link xmlns:svg="http://www.w3.org/2000/svg" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://fonts.googleapis.com/css?family=Inconsolata:400,700&amp;subset=latin,latin-ext" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/pretext.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/pretext_add_on.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/banner_default.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/toc_default.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/knowls_default.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/style_default.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/colors_default.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/setcolors.css" rel="stylesheet" type="text/css">
+<!-- 2019-10-12: Temporary - CSS file for experiments with styling --><link xmlns:svg="http://www.w3.org/2000/svg" href="developer.css" rel="stylesheet" type="text/css">
+</head>
+<body class="mathbook-book has-toc has-sidebar-left">
+<a class="assistive" href="#content">Skip to main content</a><div xmlns:svg="http://www.w3.org/2000/svg" class="hidden-content" style="display:none">\(\renewcommand{\labelitemi}{$\diamond$}
+\def\arraystretch{1.5}
+\newcommand{\contentsfinish}{}
+\newcommand{\separator}{\begin{center}\rule{\columnwidth}{\arrayrulewidth}\end{center}}
+\newcommand{\tosay}[1]{\begin{center}\text{\fbox{\scriptsize{#1}}}\end{center}}
+\renewcommand{\cftsecfont}{}
+\renewcommand{\cftsecpagefont}{}
+\renewcommand{\descriptionlabel}[1]{\hspace{\labelsep}\smallcaps{#1}}
+\def\oldequation{\equation}
+\def\endoldequation{\endequation}
+\newcommand{\nl}{
+}
+\newcommand{\runin}[1]{\textls[50]{\otherscshape #1}}
+\renewcommand{\sectionmark}[1]{}
+\renewcommand{\subsectionmark}[1]{}
+\renewcommand{\sectionmark}[1]{\markboth{{\thesection}.\ \smallcaps{#1}}{\thesection.\ \smallcaps{#1}}}
+\renewcommand{\subsectionmark}[1]{}
+\renewcommand{\sectionmark}[1]{\markboth{{\scriptsize\thesection}.\ \smallcaps{#1}}{}}
+\renewcommand{\subsectionmark}[1]{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\headrulewidth}{0.5pt}
+\newcommand{\makedefaultsection}[2][true]{
+}
+\newcommand{\timestamp}{{\color{red}Last updated: {\currenttime\ (UTC), \today}}}
+\renewcommand{\le}{\leqslant}
+\renewcommand{\leq}{\leqslant}
+\renewcommand{\geq}{\geqslant}
+\renewcommand{\ge}{\geqslant}
+\newcommand{\ideal}[1]{\left\langle\, #1 \,\right\rangle}
+\newcommand{\subgp}[1]{\left\langle\, #1 \,\right\rangle}
+\def\p{\varphi}
+\def\isomorphic{\cong}
+\def\Gal{\text{Gal}}
+\def\im{\text{im}}
+\def\normal{\vartriangleleft}
+\renewcommand{\qedsymbol}{$\checkmark$}
+\def\lcm{{\text{lcm}\,}}
+\newcommand{\q}[1]{{\color{red} {#1}}}
+\newcommand{\startimportant}[1]{\end{[{Hint:} #1]\end}}
+\renewcommand{\textcircled}[1]{\tikz[baseline=(char.base)]{\node[shape=circle,draw,inner sep=2pt,color=red] (char) {#1};}}
+\newcommand{\crossout}[1]{\tikz[baseline=(char.base)]{\node[mynode, cross out,draw] (char) {#1};}}
+\newcommand{\set}[1]{\left\{ {#1} \right\}}
+\newcommand{\setof}[2]{{\left\{#1\,\colon\,#2\right\}}}
+\def\C{{\mathbb C}}
+\def\Z{{\mathbb Z}}
+\def\bF{{\mathbb F}}
+\def\Q{{\mathbb Q}}
+\def\N{{\mathbb N}}
+\def\R{{\mathbb R}}
+\newcommand{\h}[1]{{\textbf{#1}}}
+\def\presnotes{}
+\newcommand{\lt}{&lt;}
+\newcommand{\gt}{&gt;}
+\newcommand{\amp}{&amp;}
+\)</div>
+<header id="masthead" class="smallbuttons"><div class="banner"><div class="container">
+<a id="logo-link" href=""></a><div class="title-container">
+<h1 class="heading"><a href="book-1.html"><span class="title">Linear Algebra Activities</span></a></h1>
+<p class="byline">Dr. Mike Janssen</p>
+</div>
+<div class="searchwrapper" role="search"><div class="gcse-search"></div></div>
+</div></div>
+<nav xmlns:svg="http://www.w3.org/2000/svg" id="primary-navbar" class="navbar"><div class="container">
+<div class="navbar-top-buttons">
+<button class="sidebar-left-toggle-button button active" aria-label="Show or hide table of contents sidebar">Contents</button><div class="tree-nav toolbar toolbar-divisor-3"><span class="threebuttons"><a id="previousbutton" class="previous-button toolbar-item button" href="Chap-Week10.html" title="Previous">Prev</a><a id="upbutton" class="up-button button toolbar-item" href="Chap-Week10.html" title="Up">Up</a><a id="nextbutton" class="next-button button toolbar-item" href="Chap-Week11.html" title="Next">Next</a></span></div>
+</div>
+<div class="navbar-bottom-buttons toolbar toolbar-divisor-4">
+<button class="sidebar-left-toggle-button button toolbar-item active">Contents</button><a class="previous-button toolbar-item button" href="Chap-Week10.html" title="Previous">Prev</a><a class="up-button button toolbar-item" href="Chap-Week10.html" title="Up">Up</a><a class="next-button button toolbar-item" href="Chap-Week11.html" title="Next">Next</a>
+</div>
+</div></nav></header><div class="page">
+<div xmlns:svg="http://www.w3.org/2000/svg" id="sidebar-left" class="sidebar" role="navigation"><div class="sidebar-content">
+<nav id="toc"><ul>
+<li class="link frontmatter">
+<a href="frontmatter-1.html" data-scroll="frontmatter-1"><span class="title">Front Matter</span></a><ul>
+<li><a href="colophon-1.html" data-scroll="colophon-1">Colophon</a></li>
+<li><a href="acknowledgement-1.html" data-scroll="acknowledgement-1">Acknowledgements</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="Chap-Week5.html" data-scroll="Chap-Week5"><span class="codenumber">1</span> <span class="title">Week 5: Matrices</span></a><ul><li><a href="Sec-LUFactorization.html" data-scroll="Sec-LUFactorization">Sept. 24: The \(LU\) Factorization</a></li></ul>
+</li>
+<li class="link">
+<a href="Chap-Week6.html" data-scroll="Chap-Week6"><span class="codenumber">2</span> <span class="title">Week 6: Matrices and Vector Spaces</span></a><ul>
+<li><a href="Sec-TranspSymPerm.html" data-scroll="Sec-TranspSymPerm">Sept. 29: Transposes, Symmetry, and Permutations</a></li>
+<li><a href="Sec-Spaces-of-Vectors.html" data-scroll="Sec-Spaces-of-Vectors">Oct. 1: Spaces of Vectors</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="Chap-Week7.html" data-scroll="Chap-Week7"><span class="codenumber">3</span> <span class="title">Weeks 7-8: Nullspace and solving \(Ax=b\)</span></a><ul>
+<li><a href="Sec-Nullspace.html" data-scroll="Sec-Nullspace">Oct 6: Solving \(Ax=0\)</a></li>
+<li><a href="Sec-CompleteSolution.html" data-scroll="Sec-CompleteSolution">Oct 15: The Complete Solution to \(Ax=b\)</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="Chap-Week9.html" data-scroll="Chap-Week9"><span class="codenumber">4</span> <span class="title">Weeks 9: Basis and Dimension</span></a><ul>
+<li><a href="Sec-Independence-Basis-Dimension.html" data-scroll="Sec-Independence-Basis-Dimension">Oct 20: Independence, Basis, and Dimension</a></li>
+<li><a href="Sec-FourSubspaces.html" data-scroll="Sec-FourSubspaces">Oct. 22: The Four Subspaces</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="Chap-Week10.html" data-scroll="Chap-Week10"><span class="codenumber">5</span> <span class="title">Week 10: Determinants</span></a><ul><li><a href="Sec-Determinant-Properties.html" data-scroll="Sec-Determinant-Properties" class="active">Oct 29: Properties of Determinants</a></li></ul>
+</li>
+<li class="link">
+<a href="Chap-Week11.html" data-scroll="Chap-Week11"><span class="codenumber">6</span> <span class="title">Week 11: Determinants and Eigenthings</span></a><ul>
+<li><a href="Sec-Determinant-Formulae.html" data-scroll="Sec-Determinant-Formulae">Nov. 3: Formulas for Determinants</a></li>
+<li><a href="Sec-Eigenvalues.html" data-scroll="Sec-Eigenvalues">Nov. 5: Eigenthings</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="Chap-Week12.html" data-scroll="Chap-Week12"><span class="codenumber">7</span> <span class="title">Week 12: Eigenthings</span></a><ul><li><a href="Sec-Diagonalizability.html" data-scroll="Sec-Diagonalizability">Nov. 12: Diagonalizability and Similarity</a></li></ul>
+</li>
+<li class="link">
+<a href="Chap-Week13.html" data-scroll="Chap-Week13"><span class="codenumber">8</span> <span class="title">Week 13: Linear Transformations</span></a><ul><li><a href="Sec-Linear-Transformations-I.html" data-scroll="Sec-Linear-Transformations-I">Nov. 17: Intro to Linear Transformations</a></li></ul>
+</li>
+</ul></nav><div class="extras"><nav><a class="mathbook-link" href="https://pretextbook.org">Authored in PreTeXt</a><a href="https://www.mathjax.org"><img title="Powered by MathJax" src="https://www.mathjax.org/badge/badge.gif" alt="Powered by MathJax"></a></nav></div>
+</div></div>
+<main class="main"><div id="content" class="pretext-content"><section xmlns:svg="http://www.w3.org/2000/svg" class="section" id="Sec-Determinant-Properties"><h2 class="heading hide-type">
+<span class="type">Section</span> <span class="codenumber">5.1</span> <span class="title">Oct 29: Properties of Determinants</span>
+</h2>
+<section class="subsection" id="subsection-18"><h3 class="heading hide-type">
+<span class="type">Subsection</span> <span class="codenumber">5.1.1</span> <span class="title">The Determinant</span>
+</h3>
+<p id="p-64">Generally, the most interesting matrices to look at are the square ones. For square matrices, there is an important number called the <dfn class="terminology">determinant</dfn> which helps us determine if the matrix is invertible or not.</p>
+<p id="p-65">Strang lists 10 important properties of determinants in this section, and verifies them for \(2\times 2\) matrices. The verifications for general matrices aren't any harder, but they sure are longer, so I am glad he skipped them. Anyway, these properties are enough to get by when it is time to compute. In fact, clever use of these properties can save you a lot of time.</p>
+<ol class="decimal">
+<li id="li-46">The determinant of the identity matrix is always one: \(\det(I)=1\text{.}\)</li>
+<li id="li-47">If we exchange two rows of a matrix, the determinant changes sign.</li>
+<li id="li-48">The determinant is linear in each row separately. (The fancy new word here is that \(\det\) is a <dfn class="terminology">multilinear</dfn> function.)</li>
+<li id="li-49">If two rows are equal, then the determinant is zero.</li>
+<li id="li-50">The row operation of “add a multiple of one row to another row” does not change the determinant of a matrix.</li>
+<li id="li-51">If a matrix has a row of zeros, then its determinant is zero.</li>
+<li id="li-52">If \(A\) is triangular, then \(\det(A)\) is the product of the diagonal entries of \(A\text{.}\)</li>
+<li id="li-53">A matrix is singular if its deterimant is zero. A matrix is invertible exactly when its determinant is non-zero.</li>
+<li id="li-54">The determinant is a <dfn class="terminology">multiplicative</dfn> function at the level of matrices: \(\det(AB) = \det(A)\det(B)\text{.}\)</li>
+<li id="li-55">The determinant of a matrix and its transpose are the same.</li>
+</ol>
+<p id="p-66">That last property can be helpful in a variety of ways: it allows us to translate all of those statements about rows into statements about columns!</p></section><section class="subsection" id="subsection-19"><h3 class="heading hide-type">
+<span class="type">Subsection</span> <span class="codenumber">5.1.2</span> <span class="title">Sage and the Determinant</span>
+</h3>
+<p id="p-67">Sage has a built-in command for the determinant of a square matrix. It is just what you expect: <code class="code-inline tex2jax_ignore">A.determinant()</code>.</p>
+<div class="sagecell-sage" id="sage-78"><script type="text/x-sage">A = matrix(QQ, 3,3, [4,3,5, 2,-1,0, -5,2,10])
+A
+</script></div>
+<p id="p-68">To be sure that this works properly, we can do it the old way, too:</p>
+<div class="sagecell-sage" id="sage-79"><script type="text/x-sage">P, L, U = A.LU(pivot="nonzero")
+print(P)
+print(L)
+print(U)
+</script></div>
+<p id="p-69">Clearly, there are no row swaps used, so it is easy to see that \(\det(A) = 4\cdot (-5/2)\cdot (21/2) = -105\text{.}\)</p></section><section class="subsection" id="subsection-20"><h3 class="heading hide-type">
+<span class="type">Subsection</span> <span class="codenumber">5.1.3</span> <span class="title">Explorations</span>
+</h3>
+<article class="exploration project-like" id="exploration-33"><h6 class="heading">
+<span class="type">Exploration</span><span class="space"> </span><span class="codenumber">5.1.1</span><span class="period">.</span><span class="space"> </span><span class="title">(Strang Ex 5.1.1).</span>
+</h6>If a \(4 \times 4\) matrix \(A\) has \(\det(A) = 1/2\text{,}\) find <ol class="decimal">
+<li id="li-56">\(\det(2A)\text{,}\)</li>
+<li id="li-57">\(\det(-A)\text{,}\) and</li>
+<li id="li-58">\(\det(A^2)\text{.}\)</li>
+</ol> Explain which properties of determinants you need to make your deductions.</article><article class="exploration project-like" id="exploration-34"><h6 class="heading">
+<span class="type">Exploration</span><span class="space"> </span><span class="codenumber">5.1.2</span><span class="period">.</span><span class="space"> </span><span class="title">(Strang Ex 5.1.2).</span>
+</h6>If a \(3 \times 3\) matrix has \(\det(A) = -1\text{,}\) find <ol class="decimal">
+<li id="li-59">\(\det(\frac{1}{2}A)\text{,}\)</li>
+<li id="li-60">\(\det(-A)\text{,}\)</li>
+<li id="li-61">\(\det(A^2)\text{,}\) and</li>
+<li id="li-62">\(\displaystyle \det(A^{-1})\)</li>
+</ol></article><article class="exploration project-like" id="exploration-35"><h6 class="heading">
+<span class="type">Exploration</span><span class="space"> </span><span class="codenumber">5.1.3</span><span class="period">.</span><span class="space"> </span><span class="title">(Strang Ex 5.1.10).</span>
+</h6>
+<p id="p-70">Suppose that \(A\) is a matrix with the property that the entries in each of its rows add to zero. Solve the equation \(Ax = 0\) to prove that \(\det(A)=0\text{.}\)</p>
+<p id="p-71">Then suppose that instead the entries in each row add to one. Show that \(\det(A-I)=0\text{.}\) Does this mean that \(\det(A) = 1\text{?}\) Give an example or an argument.</p></article><article class="exploration project-like" id="exploration-36"><h6 class="heading">
+<span class="type">Exploration</span><span class="space"> </span><span class="codenumber">5.1.4</span><span class="period">.</span><span class="space"> </span><span class="title">(Strang Ex 5.1.12).</span>
+</h6>The inverse of a \(2 \times 2\) matrix seems to have determinant \(1\) all the time:<div class="displaymath">
+\begin{equation*}
+\det(A^{-1}) = \det \frac{1}{ad-bc}\begin{pmatrix} d &amp; -b \\
+-c &amp; a \end{pmatrix} = \frac{ad-bc}{ad-bc} = 1.
+\end{equation*}
+</div>What is wrong with this argument? What should the value of \(\det(A^{-1})\) be?</article><article class="exploration project-like" id="exploration-37"><h6 class="heading">
+<span class="type">Exploration</span><span class="space"> </span><span class="codenumber">5.1.5</span><span class="period">.</span><span class="space"> </span><span class="title">(Strang Ex 5.1.14).</span>
+</h6>Use row operations to reduce these matrices to upper triangular ones, then find the determinants:<div class="displaymath">
+\begin{equation*}
+\det\begin{pmatrix} 1 &amp; 2 &amp; 3 &amp; 0 \\ 2 &amp; 6 &amp; 6 &amp; 1 \\ -1 &amp; 0 &amp; 0 &amp; 3 \\
+0 &amp; 2 &amp; 0 &amp; 7 \end{pmatrix} \quad \text{ and } \quad
+\det\begin{pmatrix} 2 &amp; -1 &amp; 0 &amp; 0 \\ -1 &amp; 2 &amp; -1 &amp; 0 \\ 0 &amp; -1 &amp; 2 &amp; -1 \\
+0 &amp; 0 &amp; -1 &amp; 2 \end{pmatrix}.
+\end{equation*}
+</div>
+<div class="sagecell-sage" id="sage-80"><script type="text/x-sage">C=matrix(4,4,[1,2,3,0,2,6,6,1,-1,0,0,3,0,2,0,7])
+D=matrix(4,4,[2,-1,0,0,-1,2,-1,0,0,-1,2,-1,0,0,-1,2])
+</script></div></article><article class="exploration project-like" id="exploration-38"><h6 class="heading">
+<span class="type">Exploration</span><span class="space"> </span><span class="codenumber">5.1.6</span><span class="period">.</span><span class="space"> </span><span class="title">(Strang Ex 5.1.15).</span>
+</h6>Use row operations to simplify and compute these determinants:<div class="displaymath">
+\begin{equation*}
+\det\begin{pmatrix} 101 &amp; 201 &amp; 301 \\
+102 &amp; 202 &amp; 302  \\ 103 &amp; 203 &amp; 303
+\end{pmatrix} \quad \text{ and } \quad
+\det\begin{pmatrix} 1 &amp; t &amp; t^2 \\ t &amp; 1 &amp; t \\
+t^2 &amp; t &amp; 1 \end{pmatrix}.
+\end{equation*}
+</div>
+<div class="sagecell-sage" id="sage-81"><script type="text/x-sage">B=matrix(3,3,[101,201,301,102,202,302,103,203,303])
+</script></div></article><article class="exploration project-like" id="exploration-39"><h6 class="heading">
+<span class="type">Exploration</span><span class="space"> </span><span class="codenumber">5.1.7</span><span class="period">.</span><span class="space"> </span><span class="title">(Strang Ex 5.1.23).</span>
+</h6>
+<p id="p-72">Suppose that \(A = \left( \begin{smallmatrix} 4 &amp; 1 \\ 2 &amp; 3
+\end{smallmatrix} \right)\) and that \(\lambda\) is some number. Find \(A^2\text{,}\) \(A^{-1}\) and \(A-\lambda I\) and their determinants.</p>
+<p id="p-73">Which two numbers \(\lambda\) lead to \(\det(A-\lambda I) = 0\text{?}\)</p>
+<div class="sagecell-sage" id="sage-82"><script type="text/x-sage">A = matrix(2,2,[4,1,2,3])
+</script></div></article></section></section></div></main>
+</div>
+</body>
+</html>

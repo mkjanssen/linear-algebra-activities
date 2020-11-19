@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<!--**************************************-->
+<!--*    Generated from PreTeXt source   *-->
+<!--*    on 2020-09-23T22:49:50-05:00    *-->
+<!--*                                    *-->
+<!--*      https://pretextbook.org       *-->
+<!--*                                    *-->
+<!--**************************************-->
+<html lang="en-US">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Sept. 24: Transposes and Permutations</title>
+<meta name="Keywords" content="Authored in PreTeXt">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://sagecell.sagemath.org/embedded_sagecell.js"></script><script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [['\\(','\\)']]
+    },
+    asciimath2jax: {
+        ignoreClass: ".*",
+        processClass: "has_am"
+    },
+    jax: ["input/AsciiMath"],
+    extensions: ["asciimath2jax.js"],
+    TeX: {
+        extensions: ["extpfeil.js", "autobold.js", "https://pretextbook.org/js/lib/mathjaxknowl.js", "AMScd.js", ],
+        // scrolling to fragment identifiers is controlled by other Javascript
+        positionToHash: false,
+        equationNumbers: { autoNumber: "none", useLabelIds: true, },
+        TagSide: "right",
+        TagIndent: ".8em",
+    },
+    // HTML-CSS output Jax to be dropped for MathJax 3.0
+    "HTML-CSS": {
+        scale: 88,
+        mtextFontInherit: true,
+    },
+    CommonHTML: {
+        scale: 88,
+        mtextFontInherit: true,
+    },
+});
+</script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_CHTML-full"></script><script>$(function () {
+    // Make *any* div with class 'sagecell-sage' an executable Sage cell
+    // Their results will be linked, only within language type
+    sagecell.makeSagecell({inputLocation: 'div.sagecell-sage',
+                           linked: true,
+                           languages: ['sage'],
+                           evalButtonText: 'Evaluate (Sage)'});
+});
+</script><script>(function() {
+  var cx = '017464805646507420634:llcu9bfj13p';
+  var gcse = document.createElement('script');
+  gcse.type = 'text/javascript';
+  gcse.async = true;
+  gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+  var s = document.getElementsByTagName('script')[0];
+  s.parentNode.insertBefore(gcse, s);
+})();
+</script><script src="https://pretextbook.org/js/lib/jquery.min.js"></script><script src="https://pretextbook.org/js/lib/jquery.sticky.js"></script><script src="https://pretextbook.org/js/lib/jquery.espy.min.js"></script><script src="https://pretextbook.org/js/0.13/pretext.js"></script><script src="https://pretextbook.org/js/0.13/pretext_add_on.js"></script><script src="https://pretextbook.org/js/lib/knowl.js"></script><link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Inconsolata:400,700&amp;subset=latin,latin-ext" rel="stylesheet" type="text/css">
+<link href="https://pretextbook.org/css/0.31/pretext.css" rel="stylesheet" type="text/css">
+<link href="https://pretextbook.org/css/0.31/pretext_add_on.css" rel="stylesheet" type="text/css">
+<link href="https://pretextbook.org/css/0.31/banner_default.css" rel="stylesheet" type="text/css">
+<link href="https://pretextbook.org/css/0.31/toc_default.css" rel="stylesheet" type="text/css">
+<link href="https://pretextbook.org/css/0.31/knowls_default.css" rel="stylesheet" type="text/css">
+<link href="https://pretextbook.org/css/0.31/style_default.css" rel="stylesheet" type="text/css">
+<link href="https://pretextbook.org/css/0.31/colors_default.css" rel="stylesheet" type="text/css">
+<link href="https://pretextbook.org/css/0.31/setcolors.css" rel="stylesheet" type="text/css">
+<!-- 2019-10-12: Temporary - CSS file for experiments with styling --><link href="developer.css" rel="stylesheet" type="text/css">
+</head>
+<body class="mathbook-book has-toc has-sidebar-left">
+<a class="assistive" href="#content">Skip to main content</a><div class="hidden-content" style="display:none">\(\renewcommand{\labelitemi}{$\diamond$}
+\def\arraystretch{1.5}
+\newcommand{\contentsfinish}{}
+\newcommand{\separator}{\begin{center}\rule{\columnwidth}{\arrayrulewidth}\end{center}}
+\newcommand{\tosay}[1]{\begin{center}\text{\fbox{\scriptsize{#1}}}\end{center}}
+\renewcommand{\cftsecfont}{}
+\renewcommand{\cftsecpagefont}{}
+\renewcommand{\descriptionlabel}[1]{\hspace{\labelsep}\smallcaps{#1}}
+\def\oldequation{\equation}
+\def\endoldequation{\endequation}
+\newcommand{\nl}{
+}
+\newcommand{\runin}[1]{\textls[50]{\otherscshape #1}}
+\renewcommand{\sectionmark}[1]{}
+\renewcommand{\subsectionmark}[1]{}
+\renewcommand{\sectionmark}[1]{\markboth{{\thesection}.\ \smallcaps{#1}}{\thesection.\ \smallcaps{#1}}}
+\renewcommand{\subsectionmark}[1]{}
+\renewcommand{\sectionmark}[1]{\markboth{{\scriptsize\thesection}.\ \smallcaps{#1}}{}}
+\renewcommand{\subsectionmark}[1]{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\headrulewidth}{0.5pt}
+\newcommand{\makedefaultsection}[2][true]{
+}
+\newcommand{\timestamp}{{\color{red}Last updated: {\currenttime\ (UTC), \today}}}
+\renewcommand{\le}{\leqslant}
+\renewcommand{\leq}{\leqslant}
+\renewcommand{\geq}{\geqslant}
+\renewcommand{\ge}{\geqslant}
+\newcommand{\ideal}[1]{\left\langle\, #1 \,\right\rangle}
+\newcommand{\subgp}[1]{\left\langle\, #1 \,\right\rangle}
+\def\p{\varphi}
+\def\isomorphic{\cong}
+\def\Gal{\text{Gal}}
+\def\im{\text{im}}
+\def\normal{\vartriangleleft}
+\renewcommand{\qedsymbol}{$\checkmark$}
+\def\lcm{{\text{lcm}\,}}
+\newcommand{\q}[1]{{\color{red} {#1}}}
+\newcommand{\startimportant}[1]{\end{[{Hint:} #1]\end}}
+\renewcommand{\textcircled}[1]{\tikz[baseline=(char.base)]{\node[shape=circle,draw,inner sep=2pt,color=red] (char) {#1};}}
+\newcommand{\crossout}[1]{\tikz[baseline=(char.base)]{\node[mynode, cross out,draw] (char) {#1};}}
+\newcommand{\set}[1]{\left\{ {#1} \right\}}
+\newcommand{\setof}[2]{{\left\{#1\,\colon\,#2\right\}}}
+\def\C{{\mathbb C}}
+\def\Z{{\mathbb Z}}
+\def\bF{{\mathbb F}}
+\def\Q{{\mathbb Q}}
+\def\N{{\mathbb N}}
+\def\R{{\mathbb R}}
+\newcommand{\h}[1]{{\textbf{#1}}}
+\def\presnotes{}
+\newcommand{\lt}{&lt;}
+\newcommand{\gt}{&gt;}
+\newcommand{\amp}{&amp;}
+\)</div>
+<header id="masthead" class="smallbuttons"><div class="banner"><div class="container">
+<a id="logo-link" href=""></a><div class="title-container">
+<h1 class="heading"><a href="book-1.html"><span class="title">Linear Algebra Activities</span></a></h1>
+<p class="byline">Dr. Mike Janssen</p>
+</div>
+<div class="searchwrapper" role="search"><div class="gcse-search"></div></div>
+</div></div>
+<nav id="primary-navbar" class="navbar"><div class="container">
+<div class="navbar-top-buttons">
+<button class="sidebar-left-toggle-button button active" aria-label="Show or hide table of contents sidebar">Contents</button><div class="tree-nav toolbar toolbar-divisor-3"><span class="threebuttons"><a id="previousbutton" class="previous-button toolbar-item button" href="Sec-LUFactorization.html" title="Previous">Prev</a><a id="upbutton" class="up-button button toolbar-item" href="Chap-Week5.html" title="Up">Up</a><span id="nextbutton" class="next-button button toolbar-item disabled">Next</span></span></div>
+</div>
+<div class="navbar-bottom-buttons toolbar toolbar-divisor-4">
+<button class="sidebar-left-toggle-button button toolbar-item active">Contents</button><a class="previous-button toolbar-item button" href="Sec-LUFactorization.html" title="Previous">Prev</a><a class="up-button button toolbar-item" href="Chap-Week5.html" title="Up">Up</a><span class="next-button button toolbar-item disabled">Next</span>
+</div>
+</div></nav></header><div class="page">
+<div id="sidebar-left" class="sidebar" role="navigation"><div class="sidebar-content">
+<nav id="toc"><ul>
+<li class="link frontmatter">
+<a href="frontmatter-1.html" data-scroll="frontmatter-1"><span class="title">Front Matter</span></a><ul>
+<li><a href="colophon-1.html" data-scroll="colophon-1">Colophon</a></li>
+<li><a href="acknowledgement-1.html" data-scroll="acknowledgement-1">Acknowledgements</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="Chap-Week5.html" data-scroll="Chap-Week5"><span class="codenumber">1</span> <span class="title">Week 5: Matrices</span></a><ul>
+<li><a href="Sec-LUFactorization.html" data-scroll="Sec-LUFactorization">Sept. 24: The \(LU\) Factorization</a></li>
+<li><a href="Sec-Transposes-and-Permutations.html" data-scroll="Sec-Transposes-and-Permutations" class="active">Sept. 24: Transposes and Permutations</a></li>
+</ul>
+</li>
+</ul></nav><div class="extras"><nav><a class="mathbook-link" href="https://pretextbook.org">Authored in PreTeXt</a><a href="https://www.mathjax.org"><img title="Powered by MathJax" src="https://www.mathjax.org/badge/badge.gif" alt="Powered by MathJax"></a></nav></div>
+</div></div>
+<main class="main"><div id="content" class="pretext-content"><section class="section" id="Sec-Transposes-and-Permutations"><h2 class="heading hide-type">
+<span class="type">Section</span> <span class="codenumber">1.2</span> <span class="title">Sept. 24: Transposes and Permutations</span>
+</h2>
+<section class="subsection" id="subsection-3"><h3 class="heading hide-type">
+<span class="type">Subsection</span> <span class="codenumber">1.2.1</span> <span class="title">Exploring Symmetry</span>
+</h3>
+<p id="p-7">As usual, we should set up our working environment. There should be no output.</p>
+<div class="sagecell-sage" id="sage-8"><script type="text/x-sage">M = MatrixSpace(QQ,3,3)
+I = M(1)
+</script></div>
+<article class="exploration project-like" id="exploration-6"><h6 class="heading">
+<span class="type">Exploration</span><span class="space"> </span><span class="codenumber">1.2.1</span><span class="period">.</span>
+</h6>Create two symmetric matrices (probably of different sizes, just to be safe). Use the <code class="code-inline tex2jax_ignore">.inverse()</code> command to find their inverses. What do you notice? What do you wonder? <div class="sagecell-sage" id="sage-9"><script type="text/x-sage"></script></div></article><article class="exploration project-like" id="exploration-7"><h6 class="heading">
+<span class="type">Exploration</span><span class="space"> </span><span class="codenumber">1.2.2</span><span class="period">.</span>
+</h6>Create a matrix \(A\text{.}\) Use the <code class="code-inline tex2jax_ignore">.transpose()</code> command and multiply \(A A^T\) and \(A^T A\text{.}\) What do you notice? What do you wonder? <div class="sagecell-sage" id="sage-10"><script type="text/x-sage"></script></div></article><p id="p-8">An advantage of working with symmetric matrices is in the elimination process. We really only need to work with half of the matrix (plus the main diagonal)! So let's see how symmetric matrices carry through to the \(LDU\) factorization.</p>
+<article class="exploration project-like" id="exploration-8"><h6 class="heading">
+<span class="type">Exploration</span><span class="space"> </span><span class="codenumber">1.2.3</span><span class="period">.</span>
+</h6>Consider the matrix \(B\) below. <ol class="decimal">
+<li id="li-1">Confirm that \(B\) is symmetric by using the <code class="code-inline tex2jax_ignore">.is_symmetric()</code> command.</li>
+<li id="li-2">Capture the matrices \(P\text{,}\) \(L\text{,}\) and \(U\text{,}\) using <code class="code-inline tex2jax_ignore">P, L, U = B.LU(pivot='nonzero')</code>. Confirm that no row swaps were needed.</li>
+<li id="li-3">What do you notice? Choose a different symmetric matrix to see if the same behavior persists.</li>
+</ol>
+<div class="sagecell-sage" id="sage-11"><script type="text/x-sage">B = M([2,1,0,1,1,0,0,0,1])
+B
+</script></div></article><article class="exploration project-like" id="exploration-9"><h6 class="heading">
+<span class="type">Exploration</span><span class="space"> </span><span class="codenumber">1.2.4</span><span class="period">.</span>
+</h6>Strang writes \(PA = LU\text{,}\) but Sage calculates the \(P\) that satisfies \(A = PLU\text{.}\) Let's explore their relationship (though maybe you know what it is already?). <ol class="decimal">
+<li id="li-4">Given the \(A\) below, use <code class="code-inline tex2jax_ignore">P, L, U = A.LU()</code> to calculate an \(LU\) decomposition.</li>
+<li id="li-5">Confirm that \(A = PLU\text{.}\)</li>
+<li id="li-6">What permutation matrix \(P'\) satisfies \(P' A = LU\text{?}\) Confirm it in Sage.</li>
+</ol>
+<div class="sagecell-sage" id="sage-12"><script type="text/x-sage">A = M([1,2,3,4,5,6,7,8,9])
+</script></div></article><section class="exercises" id="exercises-1"><h4 class="heading hide-type">
+<span class="type">Exercises</span> <span class="codenumber">1.2.1.1</span> <span class="title">Exercises</span>
+</h4>
+<article class="exercise exercise-like" id="exercise-1"><h6 class="heading"><span class="codenumber">1<span class="period">.</span></span></h6>Find an example of a matrix \(A\) such that \(A^T A = 0\text{,}\) but \(A \neq 0\text{.}\) <div class="sagecell-sage" id="sage-13"><script type="text/x-sage"></script></div></article><article class="exercise exercise-like" id="exercise-2"><h6 class="heading"><span class="codenumber">2<span class="period">.</span></span></h6>These are true or false questions. If the statement is true, explain why you know it is true. If the statement is false, give an example that shows it is false. <ol class="lower-alpha">
+<li id="li-7">The block matrix \(\left( \begin{smallmatrix} A &amp; 0 \\
+0 &amp; A \end{smallmatrix}\right)\) is automatically symmetric.</li>
+<li id="li-8">If \(A\) and \(B\) are symmetric, then their product \(AB\) is symmetric.</li>
+<li id="li-9">If \(A\) is not symmetric, then \(A^{-1}\) is not symmetric.</li>
+</ol></article><article class="exercise exercise-like" id="exercise-3"><h6 class="heading"><span class="codenumber">3<span class="period">.</span></span></h6>For each of the following, find an example of a \(2\times 2\) symmetric matrix with the given property: <ol class="lower-alpha">
+<li id="li-10">\(A\) is not invertible.</li>
+<li id="li-11">\(A\) is invertible but cannot be factored into \(LU\text{.}\)</li>
+<li id="li-12">\(A\) can be factored into \(LDL^T\text{,}\) but not into \(LL^T\) because \(D\) has negative entries.</li>
+</ol>
+<div class="sagecell-sage" id="sage-14"><script type="text/x-sage"></script></div></article><article class="exercise exercise-like" id="exercise-4"><h6 class="heading"><span class="codenumber">4<span class="period">.</span></span></h6>
+<p id="p-9">This is a new factorization of \(A\) into <em class="emphasis">triangular times symmetric</em>:</p>
+<p id="p-10">Start with \(A = LDU\text{.}\) Then \(A = B S\text{,}\) where \(B = L\left(U^T\right)^{-1}\) and \(S = U^T D U\text{.}\)</p>
+<p id="p-11">Explain why this choice of \(B\) is lower triangular with \(1\)'s on the diagonal. Expain why \(S\) is symmetric.</p></article></section></section></section></div></main>
+</div>
+</body>
+</html>

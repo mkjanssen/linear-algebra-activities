@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*       on 2020-11-16T21:50:57-06:00       *-->
+<!--*   A recent stable commit (2020-08-09):   *-->
+<!--* 98f21740783f166a773df4dc83cab5293ab63a4a *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<script>$(function () {
+    // Make *any* div with class 'sagecell-sage' an executable Sage cell
+    // Their results will be linked, only within language type
+    sagecell.makeSagecell({inputLocation: 'div.sagecell-sage',
+                           linked: true,
+                           languages: ['sage'],
+                           evalButtonText: 'Evaluate (Sage)'});
+});
+</script>
+</head>
+<body>
+<article class="exploration project-like"><h6 xmlns:svg="http://www.w3.org/2000/svg" class="heading">
+<span class="type">Exploration</span><span class="space"> </span><span class="codenumber">6.2.4</span><span class="period">.</span>
+</h6>A <dfn xmlns:svg="http://www.w3.org/2000/svg" class="terminology">Markov matrix</dfn> has columns that sum to 1 and are useful in probabilistic applications. It is a theorem that an \(n\times n\) Markov matrix \(M\) with strictly positive entries has a steady state vector \(q\) in the sense that \(\lim\limits_{k\to\infty} M^k x_0 = q\) given any initial state \(x_0\text{.}\) Consider the Markov matrix:<div xmlns:svg="http://www.w3.org/2000/svg" class="displaymath">
+\begin{equation*}
+M = \begin{pmatrix} 0.6 &amp; 0.2 \\ 0.4  &amp; 0.8  \end{pmatrix}.
+\end{equation*}
+</div>
+<ol class="decimal">
+<li>Choose any initial state \(x_0\text{.}\) Calculate the first ten terms of the sequence \(M^k x_0\text{.}\) What appears to be happening?</li>
+<li>Let's verify the behavior you observed. Find the eigenvalues of \(M\text{.}\) What are their associated eigenvectors?</li>
+<li>What is the steady state limit \(q\text{?}\)</li>
+</ol>
+<div class="sagecell-sage" id="sage-106"><script type="text/x-sage">
+</script></div></article><span class="incontext"><a href="Sec-Eigenvalues.html#exploration-49">in-context</a></span>
+</body>
+</html>

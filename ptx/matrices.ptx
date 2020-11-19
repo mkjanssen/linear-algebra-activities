@@ -1,0 +1,178 @@
+<chapter xml:id="Chap-Week5">
+  <title>Week 5: Matrices</title>
+  <!-- 
+<introduction>
+    <p>
+      
+    </p>
+  </introduction>
+ -->
+  <section xml:id="Sec-LUFactorization">
+    <title>Sept. 24: The <m>LU</m> Factorization</title>
+    
+<subsection>
+	<title>Warmup</title>
+    
+
+    <p>
+    		To start, let's set some variable names. We'll call our space of <m>3\times 3</m> matrices <m>M</m> and its identity matrix <m>I</m>. Just press <c>Evaluate (Sage)</c>. (There should be no output.) We'll then be able to refer to them in SageMath cells further down the page. We'll have to do this on each new page we load.
+    </p>
+
+    
+	<sage>
+      <input>
+        M = MatrixSpace(QQ,3,3)
+        I = M(1)
+      </input>     
+      <output> 
+      
+      </output>
+    </sage>
+    
+
+
+
+       
+    <principle>
+    <statement>
+    		Recall that the command <c>C=B.with_added_multiple_of_row(i,j,l)</c> adds <m>l</m> times row <m>j+1</m> of <m>B</m> to row <m>i+1</m> of <m>B</m> and calls the new matrix <m>C</m>.
+    		
+    		Use Sage to build a <m>3\times 3</m> elimination matrix <m>E</m> out of <m>I</m> that adds 5 times row 1 to row 3. Confirm that your matrix does what it should by computing <m>EA</m>, where`
+    		<me>
+			A =
+        \begin{pmatrix}
+        2 &amp; 1 &amp; 0 \\
+        0 &amp; 4 &amp; 2 \\
+        6 &amp; 3 &amp; 5
+        \end{pmatrix}
+    		</me>
+        
+        <sage>
+        	<input>
+        		A = M([2,1,0,0,4,2,6,3,5])
+        	</input>
+
+        </sage>
+    		</statement>
+    		
+    	</principle>
+  </subsection>
+
+<subsection>  	
+	<title>More Practice with <m>A = LU</m></title>
+    	
+    	<exploration xml:id="expl-lu01">
+
+    			 <statement>
+      <p>
+        Consider the following system of 3 linear equations in 3 unknowns.
+        <me>\left\{
+        \begin{array}{rrrrrrr}
+        x &amp; + &amp; y &amp; + &amp; z &amp; = &amp; 5 \\
+        x &amp; + &amp; 2y &amp; + &amp; 3z &amp; = &amp; 7 \\
+        x &amp; + &amp; 3y &amp; + &amp; 6z &amp; = &amp; 11
+        \end{array}\right.
+        </me>
+        Perform the forward pass of elimination to find an equivalent upper
+        triangular system. Write down this upper triangular system. What three
+        row operations do you need to perform to make this work?
+      </p>
+      <p>
+        Use the information you just found to write a matrix
+        decomposition <m>A = LU</m> (without explicitly finding any inverse matrices!) for the coefficient matrix <m>A</m> for this
+        system of equations. (Be sure to multiply the matrices <m>L</m> and <m>U</m>
+        to check your work.)
+      </p>
+      
+      <p>
+      	Then solve the system <m>Ly = b</m>, and subsequently the system <m>Ux = y</m>. (These are done easily enough by hand, but you can confirm your findings using Sage's <c>.rref()</c> command.)
+      </p>
+
+      
+      <sage>
+      
+      </sage>
+
+    </statement>
+    		
+
+
+    		
+    	</exploration>
+    	
+    	
+    	<exploration>
+    		<statement>
+    			Of course, Sage can do this for us. Use the coefficient matrix from <xref ref="expl-lu01" /> to test the command <c>.LU()</c>. What do you notice? What do you wonder?
+    			<sage>
+    			
+    			</sage>
+</statement>
+
+    	</exploration>
+
+
+<exploration>
+    <statement>
+      The matrix below is <term>symmetric</term>, because if you flip it across
+      its main diagonal you get the same thing. Find the <m>LDU</m> triple
+      decomposition of this symmetric matrix.
+      <me>
+        B =
+        \begin{pmatrix}
+        2 &amp; 4 \\
+        4 &amp; 11
+        \end{pmatrix}
+      </me>
+      <sage>
+      
+      </sage>
+
+    </statement>
+    
+</exploration>
+
+
+<exploration>
+    <statement>
+      The matrix below is <term>symmetric</term>, because if you flip it
+      across its main diagonal you get the same thing. Find the <m>LDU</m>
+      triple decomposition of this symmetric matrix.
+      <me>
+        C =
+        \begin{pmatrix}
+        1 &amp; 4 &amp; 0 \\
+        4 &amp; 12 &amp; 4 \\
+        0 &amp; 4 &amp; 0
+        \end{pmatrix}
+      </me>
+      <sage>
+      </sage>
+
+    </statement>
+</exploration>
+
+
+ 
+
+<exploration>
+    <statement>
+      Find an example of a <m>3\times 3</m> matrix <m>A</m> which has all of
+      its entries non-zero, so that the <m>LU</m> decomposition has
+      <m>U = I</m>, where <m>I</m> is the identity matrix, or explain why no
+      such example exists.
+      <sage>
+      </sage>
+
+    </statement>
+</exploration>
+
+</subsection>
+
+    
+    
+  </section>
+  
+
+
+</chapter>

@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*       on 2020-11-16T21:50:55-06:00       *-->
+<!--*   A recent stable commit (2020-08-09):   *-->
+<!--* 98f21740783f166a773df4dc83cab5293ab63a4a *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<html lang="en-US">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Oct 6: Solving \(Ax=0\)</title>
+<meta name="Keywords" content="Authored in PreTeXt">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://sagecell.sagemath.org/embedded_sagecell.js"></script><script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [['\\(','\\)']]
+    },
+    asciimath2jax: {
+        ignoreClass: ".*",
+        processClass: "has_am"
+    },
+    jax: ["input/AsciiMath"],
+    extensions: ["asciimath2jax.js"],
+    TeX: {
+        extensions: ["extpfeil.js", "autobold.js", "https://pretextbook.org/js/lib/mathjaxknowl.js", "AMScd.js", ],
+        // scrolling to fragment identifiers is controlled by other Javascript
+        positionToHash: false,
+        equationNumbers: { autoNumber: "none", useLabelIds: true, },
+        TagSide: "right",
+        TagIndent: ".8em",
+    },
+    // HTML-CSS output Jax to be dropped for MathJax 3.0
+    "HTML-CSS": {
+        scale: 88,
+        mtextFontInherit: true,
+    },
+    CommonHTML: {
+        scale: 88,
+        mtextFontInherit: true,
+    },
+});
+</script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_CHTML-full"></script><script>$(function () {
+    // Make *any* div with class 'sagecell-sage' an executable Sage cell
+    // Their results will be linked, only within language type
+    sagecell.makeSagecell({inputLocation: 'div.sagecell-sage',
+                           linked: true,
+                           languages: ['sage'],
+                           evalButtonText: 'Evaluate (Sage)'});
+});
+</script><script async="" src="https://cse.google.com/cse.js?cx=017464805646507420634:llcu9bfj13p"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/lib/jquery.min.js"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/lib/jquery.sticky.js"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/lib/jquery.espy.min.js"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/0.13/pretext.js"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/0.13/pretext_add_on.js"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/lib/knowl.js"></script><!--knowl.js code controls Sage Cells within knowls--><script xmlns:svg="http://www.w3.org/2000/svg">sagecellEvalName='Evaluate (Sage)';
+</script><link xmlns:svg="http://www.w3.org/2000/svg" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://fonts.googleapis.com/css?family=Inconsolata:400,700&amp;subset=latin,latin-ext" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/pretext.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/pretext_add_on.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/banner_default.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/toc_default.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/knowls_default.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/style_default.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/colors_default.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/setcolors.css" rel="stylesheet" type="text/css">
+<!-- 2019-10-12: Temporary - CSS file for experiments with styling --><link xmlns:svg="http://www.w3.org/2000/svg" href="developer.css" rel="stylesheet" type="text/css">
+</head>
+<body class="mathbook-book has-toc has-sidebar-left">
+<a class="assistive" href="#content">Skip to main content</a><div xmlns:svg="http://www.w3.org/2000/svg" class="hidden-content" style="display:none">\(\renewcommand{\labelitemi}{$\diamond$}
+\def\arraystretch{1.5}
+\newcommand{\contentsfinish}{}
+\newcommand{\separator}{\begin{center}\rule{\columnwidth}{\arrayrulewidth}\end{center}}
+\newcommand{\tosay}[1]{\begin{center}\text{\fbox{\scriptsize{#1}}}\end{center}}
+\renewcommand{\cftsecfont}{}
+\renewcommand{\cftsecpagefont}{}
+\renewcommand{\descriptionlabel}[1]{\hspace{\labelsep}\smallcaps{#1}}
+\def\oldequation{\equation}
+\def\endoldequation{\endequation}
+\newcommand{\nl}{
+}
+\newcommand{\runin}[1]{\textls[50]{\otherscshape #1}}
+\renewcommand{\sectionmark}[1]{}
+\renewcommand{\subsectionmark}[1]{}
+\renewcommand{\sectionmark}[1]{\markboth{{\thesection}.\ \smallcaps{#1}}{\thesection.\ \smallcaps{#1}}}
+\renewcommand{\subsectionmark}[1]{}
+\renewcommand{\sectionmark}[1]{\markboth{{\scriptsize\thesection}.\ \smallcaps{#1}}{}}
+\renewcommand{\subsectionmark}[1]{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\headrulewidth}{0.5pt}
+\newcommand{\makedefaultsection}[2][true]{
+}
+\newcommand{\timestamp}{{\color{red}Last updated: {\currenttime\ (UTC), \today}}}
+\renewcommand{\le}{\leqslant}
+\renewcommand{\leq}{\leqslant}
+\renewcommand{\geq}{\geqslant}
+\renewcommand{\ge}{\geqslant}
+\newcommand{\ideal}[1]{\left\langle\, #1 \,\right\rangle}
+\newcommand{\subgp}[1]{\left\langle\, #1 \,\right\rangle}
+\def\p{\varphi}
+\def\isomorphic{\cong}
+\def\Gal{\text{Gal}}
+\def\im{\text{im}}
+\def\normal{\vartriangleleft}
+\renewcommand{\qedsymbol}{$\checkmark$}
+\def\lcm{{\text{lcm}\,}}
+\newcommand{\q}[1]{{\color{red} {#1}}}
+\newcommand{\startimportant}[1]{\end{[{Hint:} #1]\end}}
+\renewcommand{\textcircled}[1]{\tikz[baseline=(char.base)]{\node[shape=circle,draw,inner sep=2pt,color=red] (char) {#1};}}
+\newcommand{\crossout}[1]{\tikz[baseline=(char.base)]{\node[mynode, cross out,draw] (char) {#1};}}
+\newcommand{\set}[1]{\left\{ {#1} \right\}}
+\newcommand{\setof}[2]{{\left\{#1\,\colon\,#2\right\}}}
+\def\C{{\mathbb C}}
+\def\Z{{\mathbb Z}}
+\def\bF{{\mathbb F}}
+\def\Q{{\mathbb Q}}
+\def\N{{\mathbb N}}
+\def\R{{\mathbb R}}
+\newcommand{\h}[1]{{\textbf{#1}}}
+\def\presnotes{}
+\newcommand{\lt}{&lt;}
+\newcommand{\gt}{&gt;}
+\newcommand{\amp}{&amp;}
+\)</div>
+<header id="masthead" class="smallbuttons"><div class="banner"><div class="container">
+<a id="logo-link" href=""></a><div class="title-container">
+<h1 class="heading"><a href="book-1.html"><span class="title">Linear Algebra Activities</span></a></h1>
+<p class="byline">Dr. Mike Janssen</p>
+</div>
+<div class="searchwrapper" role="search"><div class="gcse-search"></div></div>
+</div></div>
+<nav xmlns:svg="http://www.w3.org/2000/svg" id="primary-navbar" class="navbar"><div class="container">
+<div class="navbar-top-buttons">
+<button class="sidebar-left-toggle-button button active" aria-label="Show or hide table of contents sidebar">Contents</button><div class="tree-nav toolbar toolbar-divisor-3"><span class="threebuttons"><a id="previousbutton" class="previous-button toolbar-item button" href="Chap-Week7.html" title="Previous">Prev</a><a id="upbutton" class="up-button button toolbar-item" href="Chap-Week7.html" title="Up">Up</a><a id="nextbutton" class="next-button button toolbar-item" href="Sec-CompleteSolution.html" title="Next">Next</a></span></div>
+</div>
+<div class="navbar-bottom-buttons toolbar toolbar-divisor-4">
+<button class="sidebar-left-toggle-button button toolbar-item active">Contents</button><a class="previous-button toolbar-item button" href="Chap-Week7.html" title="Previous">Prev</a><a class="up-button button toolbar-item" href="Chap-Week7.html" title="Up">Up</a><a class="next-button button toolbar-item" href="Sec-CompleteSolution.html" title="Next">Next</a>
+</div>
+</div></nav></header><div class="page">
+<div xmlns:svg="http://www.w3.org/2000/svg" id="sidebar-left" class="sidebar" role="navigation"><div class="sidebar-content">
+<nav id="toc"><ul>
+<li class="link frontmatter">
+<a href="frontmatter-1.html" data-scroll="frontmatter-1"><span class="title">Front Matter</span></a><ul>
+<li><a href="colophon-1.html" data-scroll="colophon-1">Colophon</a></li>
+<li><a href="acknowledgement-1.html" data-scroll="acknowledgement-1">Acknowledgements</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="Chap-Week5.html" data-scroll="Chap-Week5"><span class="codenumber">1</span> <span class="title">Week 5: Matrices</span></a><ul><li><a href="Sec-LUFactorization.html" data-scroll="Sec-LUFactorization">Sept. 24: The \(LU\) Factorization</a></li></ul>
+</li>
+<li class="link">
+<a href="Chap-Week6.html" data-scroll="Chap-Week6"><span class="codenumber">2</span> <span class="title">Week 6: Matrices and Vector Spaces</span></a><ul>
+<li><a href="Sec-TranspSymPerm.html" data-scroll="Sec-TranspSymPerm">Sept. 29: Transposes, Symmetry, and Permutations</a></li>
+<li><a href="Sec-Spaces-of-Vectors.html" data-scroll="Sec-Spaces-of-Vectors">Oct. 1: Spaces of Vectors</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="Chap-Week7.html" data-scroll="Chap-Week7"><span class="codenumber">3</span> <span class="title">Weeks 7-8: Nullspace and solving \(Ax=b\)</span></a><ul>
+<li><a href="Sec-Nullspace.html" data-scroll="Sec-Nullspace" class="active">Oct 6: Solving \(Ax=0\)</a></li>
+<li><a href="Sec-CompleteSolution.html" data-scroll="Sec-CompleteSolution">Oct 15: The Complete Solution to \(Ax=b\)</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="Chap-Week9.html" data-scroll="Chap-Week9"><span class="codenumber">4</span> <span class="title">Weeks 9: Basis and Dimension</span></a><ul>
+<li><a href="Sec-Independence-Basis-Dimension.html" data-scroll="Sec-Independence-Basis-Dimension">Oct 20: Independence, Basis, and Dimension</a></li>
+<li><a href="Sec-FourSubspaces.html" data-scroll="Sec-FourSubspaces">Oct. 22: The Four Subspaces</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="Chap-Week10.html" data-scroll="Chap-Week10"><span class="codenumber">5</span> <span class="title">Week 10: Determinants</span></a><ul><li><a href="Sec-Determinant-Properties.html" data-scroll="Sec-Determinant-Properties">Oct 29: Properties of Determinants</a></li></ul>
+</li>
+<li class="link">
+<a href="Chap-Week11.html" data-scroll="Chap-Week11"><span class="codenumber">6</span> <span class="title">Week 11: Determinants and Eigenthings</span></a><ul>
+<li><a href="Sec-Determinant-Formulae.html" data-scroll="Sec-Determinant-Formulae">Nov. 3: Formulas for Determinants</a></li>
+<li><a href="Sec-Eigenvalues.html" data-scroll="Sec-Eigenvalues">Nov. 5: Eigenthings</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="Chap-Week12.html" data-scroll="Chap-Week12"><span class="codenumber">7</span> <span class="title">Week 12: Eigenthings</span></a><ul><li><a href="Sec-Diagonalizability.html" data-scroll="Sec-Diagonalizability">Nov. 12: Diagonalizability and Similarity</a></li></ul>
+</li>
+<li class="link">
+<a href="Chap-Week13.html" data-scroll="Chap-Week13"><span class="codenumber">8</span> <span class="title">Week 13: Linear Transformations</span></a><ul><li><a href="Sec-Linear-Transformations-I.html" data-scroll="Sec-Linear-Transformations-I">Nov. 17: Intro to Linear Transformations</a></li></ul>
+</li>
+</ul></nav><div class="extras"><nav><a class="mathbook-link" href="https://pretextbook.org">Authored in PreTeXt</a><a href="https://www.mathjax.org"><img title="Powered by MathJax" src="https://www.mathjax.org/badge/badge.gif" alt="Powered by MathJax"></a></nav></div>
+</div></div>
+<main class="main"><div id="content" class="pretext-content"><section xmlns:svg="http://www.w3.org/2000/svg" class="section" id="Sec-Nullspace"><h2 class="heading hide-type">
+<span class="type">Section</span> <span class="codenumber">3.1</span> <span class="title">Oct 6: Solving \(Ax=0\)</span>
+</h2>
+<section class="subsection" id="subsection-8"><h3 class="heading hide-type">
+<span class="type">Subsection</span> <span class="codenumber">3.1.1</span> <span class="title">SageMath and the Nullspace</span>
+</h3>
+<p id="p-17">The main idea in this section is to get solutions to homogeneous systems \(Ax=0\) by using the reduced row echelon form. This will compute the nullspace of the matrix \(A\text{.}\) SageMath has some useful built-      in commands for this. Let us explore an example.</p>
+<div class="sagecell-sage" id="sage-25"><script type="text/x-sage">A = matrix(QQ, 3,4, [1,2,3,4,5,6,7,8,9,10,11,12]); A
+</script></div>
+<p id="p-18">The most direct way is to ask SageMath for the nullspace. But SageMath doesn't call it that. It uses the synonym <dfn class="terminology">kernel</dfn>. Also, because we do matrix vector multiplication with vectors on the right, we have to tell SageMath to do it that way.</p>
+<div class="sagecell-sage" id="sage-26"><script type="text/x-sage">A.right_kernel()
+</script></div>
+<p id="p-19">Notice that SageMath returns the nullspace by specifying a basis. This is a complete set of special solutions! How can we be sure?</p>
+<p id="p-20">Let's check that those vectors are actually in the nullspace. This command should return two zero vectors in \(\mathbb{R}^3\text{.}\)</p>
+<div class="sagecell-sage" id="sage-27"><script type="text/x-sage">sage1 = vector([1,0,-3,2])
+sage2 = vector([0,1,-2,1])
+A*sage1, A*sage2
+</script></div>
+<p id="p-21">Remember that the method to find the reduced row echelon form is .rref().</p>
+<div class="sagecell-sage" id="sage-28"><script type="text/x-sage">A.rref()
+</script></div>
+<p id="p-22">What this means is that the null space is described by the two equations</p>
+<div class="displaymath">
+\begin{equation*}
+\left\{
+\begin{array}{rrrrrrrrr}
+v &amp; &amp; &amp; - &amp; y &amp; - &amp; 2 z &amp; = &amp; 0 \\
+&amp; &amp; x &amp; + &amp; 2y &amp; + &amp; 3 z &amp; = &amp; 0
+\end{array}\right.
+\end{equation*}
+</div>
+<p data-braille="continuation">That is, the nullspace is the intersection of these two hyperplanes in \(\mathbb{R}^4\text{.}\)</p>
+<div class="sagecell-sage" id="sage-29"><script type="text/x-sage"># Let's see what Sage's solve command tells us:
+v,x,y,z = var('v x y z')
+expr1 = v - y - 2*z == 0
+expr2 = x + 2*y + 3*z == 0
+solve([expr1, expr2], [v,x,y,z])
+</script></div>
+<p id="p-23">Aha! SageMath is trying to tell us that the pivot variables \(v\) and \(x\) should be written in terms of the free variables \(y\) and \(z\text{.}\) Strang's "easy way out" is to choose the free variables to be \(0\)'s and \(1\)'s in combination. Here we have two of them, so we will alternate. One special solution will be to choose \(y = 1\) and \(z=0\text{.}\) Then we solve to get \(v = 1\) and \(x = -2\text{.}\)</p>
+<div class="sagecell-sage" id="sage-30"><script type="text/x-sage">special1 = vector([1,-2,1,0])
+
+# let's check
+A*special1
+</script></div>
+<p id="p-24">Similarly, we can choose \(y=0\) and \(z=1\) to get a second special solution. This leads to \(v=2\) and \(x = -3\text{.}\)</p>
+<div class="sagecell-sage" id="sage-31"><script type="text/x-sage">special2 = vector([2,-3,0,1])
+
+#let's check
+A*special2
+</script></div>
+<p id="p-25">These two vectors form a <dfn class="terminology">basis</dfn> for the nullspace. Every vector in the nullspace can be written as a linear combination of these two vectors.</p>
+<p id="p-26">What is weird is that SageMath always wants its basis to look like \(1\)'s and \(0\)'s at the beginning, and our process makes them look like that at the end!</p>
+<p id="p-27">How can we be sure everything lines up?  Well, it is possible to express the two vectors that SageMath gives us as a linear combination of the ones we just found, and vice versa. So we are getting <em class="emphasis">two</em> descriptions of the same space.</p>
+<div class="sagecell-sage" id="sage-32"><script type="text/x-sage">sage1 == -3* special1 + 2* special2
+</script></div>
+<div class="sagecell-sage" id="sage-33"><script type="text/x-sage">sage2 == -2* special1 + special2
+</script></div>
+<div class="sagecell-sage" id="sage-34"><script type="text/x-sage">special1 ==  sage1 - 2* sage2
+</script></div>
+<div class="sagecell-sage" id="sage-35"><script type="text/x-sage">special2 == 2* sage1 - 3* sage2
+</script></div>
+<article class="exploration project-like" id="exploration-18"><h6 class="heading">
+<span class="type">Exploration</span><span class="space"> </span><span class="codenumber">3.1.1</span><span class="period">.</span>
+</h6>What questions do you have?</article></section><section class="subsection" id="subsection-9"><h3 class="heading hide-type">
+<span class="type">Subsection</span> <span class="codenumber">3.1.2</span> <span class="title">Explorations</span>
+</h3>
+<article class="exploration project-like" id="exploration-19"><h6 class="heading">
+<span class="type">Exploration</span><span class="space"> </span><span class="codenumber">3.1.2</span><span class="period">.</span>
+</h6>
+<p id="p-28">For each matrix in this activity, your job is to find both</p>
+<ul class="disc">
+<li id="li-27">The minimal set of equations which cuts out the nullspace of the given matrix as an intersection of hyperplanes; and</li>
+<li id="li-28">the size of the nullspace, expressed through the number “independent directions” it contains.</li>
+</ul> As always, it will be crucial to explain how you know you are correct.<div class="displaymath">
+\begin{equation*}
+A = \begin{pmatrix}
+1 &amp; 2 &amp; 3 \\
+4 &amp; 8 &amp; 5 \\
+-1 &amp; -2 &amp; 0
+\end{pmatrix}, 
+B = \begin{pmatrix}
+2 &amp; 1 &amp; 3 &amp; 7 \\
+1 &amp; 1 &amp; 1 &amp; -3
+\end{pmatrix},
+C= \begin{pmatrix}
+2 &amp; 3 &amp; 5 &amp; 6 \\
+1 &amp; 1 &amp; 2 &amp; 3 \\
+0 &amp; 1 &amp; 1 &amp; 0 \\
+-1 &amp; -1 &amp; -2 &amp; -3 \\
+1 &amp; 1 &amp; 2 &amp; 3
+\end{pmatrix}
+\end{equation*}
+</div>
+<div class="sagecell-sage" id="sage-36"><script type="text/x-sage">A=matrix(3,3,[1,2,3,4,8,5,-1,-2,0])
+B=matrix(2,4,[2,1,3,7,1,1,1,-3])
+C=matrix(5,4,[2,3,5,6,1,1,2,3,0,1,1,0,-1,-1,-2,-3,1,1,2,3])
+</script></div></article><article class="exploration project-like" id="exploration-20"><h6 class="heading">
+<span class="type">Exploration</span><span class="space"> </span><span class="codenumber">3.1.3</span><span class="period">.</span>
+</h6>
+<p id="p-29">In this exploration, your job is to find a complete set of special solutions to the homogeneous equation \(Ax=0\text{.}\) By a “complete set,” we mean “enough special solutions so that any vector in the nullspace of \(A\) can be expressed as a linear combination of your vectors.”</p>
+<p id="p-30">As always, it will be crucial to explain how you know you are correct.</p>
+<div class="displaymath">
+\begin{equation*}
+A = \begin{pmatrix}
+1 &amp; 2 &amp; 3 \\
+4 &amp; 8 &amp; 5 \\
+-1 &amp; -2 &amp; 0
+\end{pmatrix}, 
+B = \begin{pmatrix}
+2 &amp; 1 &amp; 3 &amp; 7 \\
+1 &amp; 1 &amp; 1 &amp; -3
+\end{pmatrix},
+C= \begin{pmatrix}
+2 &amp; 3 &amp; 5 &amp; 6 \\
+1 &amp; 1 &amp; 2 &amp; 3 \\
+0 &amp; 1 &amp; 1 &amp; 0 \\
+-1 &amp; -1 &amp; -2 &amp; -3 \\
+1 &amp; 1 &amp; 2 &amp; 3
+\end{pmatrix}
+\end{equation*}
+</div>
+<div class="sagecell-sage" id="sage-37"><script type="text/x-sage">A=matrix(3,3,[1,2,3,4,8,5,-1,-2,0])
+B=matrix(2,4,[2,1,3,7,1,1,1,-3])
+C=matrix(5,4,[2,3,5,6,1,1,2,3,0,1,1,0,-1,-1,-2,-3,1,1,2,3])
+</script></div></article></section></section></div></main>
+</div>
+</body>
+</html>
